@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.navigation {
+  flex-basis: 450px;
+}
+.navigation-tabs {
+  display: flex;
+  height: 30px;
+  justify-content: space-around;
+}
+
+.navigation-items {
+  background: #b7b7b7;
+  width: 100%;
+  line-height: 25px;
+}
+
+.navigation-items:hover {
+  background: rgb(90, 85, 85);
+  transition: 0.5s;
+}
