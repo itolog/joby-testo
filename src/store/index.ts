@@ -3,9 +3,11 @@ import thunkMiddleware from "redux-thunk";
 import { StateType } from "typesafe-actions";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { reducer as productsReducer } from "./products/reducers";
+import { reducer as customersReducer } from "./customers/reducers";
 
 const reducer = combineReducers({
-  products: productsReducer
+  products: productsReducer,
+  customers: customersReducer
 });
 
 export type AppState = StateType<typeof reducer>;

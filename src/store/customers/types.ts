@@ -5,6 +5,6 @@ export interface Customers {
     phone: string
 }
 
-// export interface CustomersState {
-//    customers: Customers[]
-// }
+export interface CustomersState {
+   customers: Customers[]
+}

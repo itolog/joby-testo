@@ -29,8 +29,8 @@ class Products extends Component<Props, {}> {
         {products.map((item) => {
           return (
             <tr key={item.id.toString()}>
-              <th>{item.name}</th>
-              <th>{item.price}</th>
+              <td>{item.name}</td>
+              <td>{item.price} $</td>
             </tr>
           )
         })}

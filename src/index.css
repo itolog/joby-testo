@@ -30,9 +30,13 @@ table {
 }
 
 table,
-th,
 td {
   border: 1px solid #949494;
+  color: rgb(87, 82, 82);
+  font-size: 1.1em;
+}
+th {
+  color: black;
 }
 .is-active {
   background: grey;
