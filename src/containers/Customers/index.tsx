@@ -20,7 +20,6 @@ const mapStateToProps = (state: AppState) => {
 class Customer extends PureComponent<Props, {}> {
     render() {
         const { customers } = this.props;
-        console.log(customers)
         return (
             <table className='table'>    
              <tbody>
