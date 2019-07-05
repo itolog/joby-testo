@@ -20,3 +20,6 @@ export const getInvoices = (state: AppState) => {
 
 export const getActiveInvoices = (state: AppState) => Object.keys(state.invoices.invoices).length;
 
+export const getInvoiceById = (state: AppState) =>  {
+  return state.invoices.invoices[state.invoices.currentIdInvoice]
+};

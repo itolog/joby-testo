@@ -1,7 +1,8 @@
 import {  InvoiseState } from './types';
-import { ActionTypes, ActionTypeUnion } from '../products/actions';
+import { ActionTypes, ActionTypeUnion } from './actions';
 
 const initialState: InvoiseState = {
+  currentIdInvoice: 1,
   invoices: {
     10: {
       id:  10,
@@ -51,7 +52,12 @@ export function reducer(
   action: ActionTypeUnion
 ): InvoiseState {
   switch (action.type) {
-
+    case ActionTypes.CURRENT_ID_INVOICE: {
+      return {
+        ...state,
+        currentIdInvoice: action.payload
+      }
+    }
     default: {
       return state;
     }

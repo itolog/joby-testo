@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux'
+
+import  { Actions } from '../../store/invoices/actions'
 import { getInvoices } from '../../store/invoices/selectors';
 import { AppState } from '../../store';
 import { History } from 'history';
@@ -15,17 +18,25 @@ const mapStateToProps = (state: AppState) => {
   };
 };
 
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  setInvoiceId: (id: number) => dispatch(Actions.setCurrentIdInvoice(id)),
+});
+
+
 type Props =
   & ReturnType<typeof mapStateToProps>
   & MainProps
+  & ReturnType<typeof mapDispatchToProps>
   ;
 
 
-function MainPage({ invoices, history }: Props) {
+function MainPage({ invoices, history, setInvoiceId }: Props) {
   // Вынести в компонент кнопку
-  function toView() {
+  function toView(id: number): void {
     history.push(`/view/`);
-  };
+    setInvoiceId(id)
+  }
+
   return (
     <table className='table'>
       <tbody>
@@ -46,7 +57,7 @@ function MainPage({ invoices, history }: Props) {
             <td>{item.discount}</td>
             <td>{item.total}</td>
             <td>
-              <button className='invoices-btn invoices-btn--view' onClick={toView}>View</button>
+              <button className='invoices-btn invoices-btn--view' onClick={() => toView(item.id)}>View</button>
             </td>
           </tr>
         );
@@ -56,4 +67,4 @@ function MainPage({ invoices, history }: Props) {
   );
 }
 
-export default connect(mapStateToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

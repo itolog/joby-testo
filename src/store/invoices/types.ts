@@ -14,6 +14,7 @@ export interface InvoiceItems {
 }
 
 export interface InvoiseState {
+  currentIdInvoice: number,
   invoices: {
     [id: number]: Invoices
   }
