@@ -6,5 +6,7 @@ export interface Customers {
 }
 
 export interface CustomersState {
-   customers: Customers[]
+   customers: {
+     [id: number]: Customers
+   }
 }

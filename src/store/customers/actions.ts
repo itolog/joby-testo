@@ -1,16 +1,11 @@
 import { action, ActionType } from 'typesafe-actions';
 
 export enum ActionTypes {
-  ADD_CUSTOMER = 'ADD_CUSTOMER'
+ GET_CUSTOMER_BY_ID = 'GET_CUSTOMER_BY_ID'
 }
 
 export const Actions = {
-  addCustomer: (name: string, address: string, phone: string) => action(ActionTypes.ADD_CUSTOMER, {
-    id: Math.random(),
-    name,
-    address,
-    phone
-  })
+  addCustomer: (id: number) => action(ActionTypes.GET_CUSTOMER_BY_ID, id)
 };
 
 export type ActionTypeUnion = ActionType<typeof Actions>;

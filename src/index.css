@@ -37,6 +37,7 @@ td {
 }
 th {
   color: black;
+  border: 1px solid #949494;
 }
 .is-active {
   background: grey;

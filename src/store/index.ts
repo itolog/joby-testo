@@ -4,10 +4,12 @@ import { StateType } from "typesafe-actions";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { reducer as productsReducer } from "./products/reducers";
 import { reducer as customersReducer } from "./customers/reducers";
+import { reducer as invoicesReducer } from "./invoices/reducers";
 
 const reducer = combineReducers({
   products: productsReducer,
-  customers: customersReducer
+  customers: customersReducer,
+  invoices: invoicesReducer
 });
 
 export type AppState = StateType<typeof reducer>;

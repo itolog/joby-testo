@@ -2,7 +2,7 @@ import { action, ActionType } from 'typesafe-actions';
 import { Products } from './types';
 
 export enum ActionTypes {
-  GET_PRODUCTS_FROM_SERVER = " GET_PRODUCTS_FROM_SERVER"
+  GET_PRODUCTS_FROM_SERVER = "GET_PRODUCTS_FROM_SERVER"
 }
 
 export const Actions = {
