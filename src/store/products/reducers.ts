@@ -25,8 +25,11 @@ export function reducer(
   action: ActionTypeUnion
 ): Products[] {
   switch (action.type) {
-    case ActionTypes.GET_PRODUCT_BY_ID: {
-      return state.filter((item) => item.id === action.payload.id);
+    case ActionTypes.GET_PRODUCTS_FROM_SERVER: {
+      return [
+        ...state,
+        action.payload
+      ]
     }
 
     default: {

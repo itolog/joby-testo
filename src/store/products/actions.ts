@@ -2,11 +2,11 @@ import { action, ActionType } from 'typesafe-actions';
 import { Products } from './types';
 
 export enum ActionTypes {
-  GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID"
+  GET_PRODUCTS_FROM_SERVER = " GET_PRODUCTS_FROM_SERVER"
 }
 
 export const Actions = {
-  addTodo: (payload: Products) => action(ActionTypes.GET_PRODUCT_BY_ID, payload)
+  addTodo: (payload: Products) => action(ActionTypes.GET_PRODUCTS_FROM_SERVER, payload)
 };
 
 export type ActionTypeUnion = ActionType<typeof Actions>;
