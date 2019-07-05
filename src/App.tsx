@@ -7,7 +7,7 @@ import Invoices from './containers/Invoices';
 import Header from './components/Header';
 import NoMatch from './components/NoMatch';
 import MainPage from './components/MainPage';
-import ViewPage from  './components/ViewPage'
+import ViewPage from './containers/ViewPage'
 
 import './App.css';
 

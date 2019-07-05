@@ -39,7 +39,7 @@ const initialState: InvoiseState = {
         {
           id: 44,
           invoice_id: 11,
-          product_id: 2,
+          product_id: 3,
           quantity: 1
         }
       ]

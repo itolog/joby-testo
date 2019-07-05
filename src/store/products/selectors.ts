@@ -1,5 +1,18 @@
 import { AppState } from '../index';
 
-// export const getProductById = (state: AppState) => state.products;
+export const getProductState = (state: AppState) => state.products.products;
 
-export const getProducts = (state: AppState) => state.products;
+export const getProducts = (state: AppState) => {
+  const products = [];
+  for (const key in state.products.products){
+    if(state.products.products.hasOwnProperty(key))  {
+      products.push({
+        id: state.products.products[key].id,
+        name: state.products.products[key].name,
+        price: state.products.products[key].price
+
+      })
+    }
+  }
+  return products;
+};

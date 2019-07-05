@@ -3,3 +3,9 @@ export interface Products {
   name: string;
   price: number;
 }
+
+export interface ProductsState {
+  products: {
+    [id: number]: Products
+  }
+}
