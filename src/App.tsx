@@ -1,10 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Products from './containers/Products/';
 import Customers from './containers/Customers/';
 import Invoices from './containers/Invoices'
 import Header from './components/Header';
+import NoMatch from './components/NoMatch'
+import MainPage from "./components/MainPage"
+
 import './App.css';
 
 const App: React.FC = () => {
@@ -14,9 +17,14 @@ const App: React.FC = () => {
         <div className='container'>
           <Header />
           <main className='main'>
-            <Route path='/products/' component={Products} />
-            <Route path='/customers/' component={Customers} />
-            <Route path='/invoices/' exact component={Invoices} />
+
+            <Switch>
+              <Route path='/' exact  component={MainPage} />
+              <Route path='/products/' component={Products} />
+              <Route path='/customers/' component={Customers} />
+              <Route path='/invoices/' exact component={Invoices} />
+              <Route component={NoMatch}/>
+            </Switch>
           </main>
         </div>
       </div>
