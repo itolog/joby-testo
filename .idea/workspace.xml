@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b89bfd8-2a0b-48ce-b501-516dd9a4741f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/containers/Invoices/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Invoices/invoices.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/invoices/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/invoices/reducers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/invoices/selectors.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/invoices/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Customers/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Customers/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/customers/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/customers/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers/reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/customers/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers/selectors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/customers/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/products/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/products/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/invoices/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/invoices/selectors.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,29 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Invoices/index.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="59" column="70" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="70" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="invoices.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/Invoices/invoices.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -79,11 +43,12 @@
         <option value="$PROJECT_DIR$/src/store/customers/types.ts" />
         <option value="$PROJECT_DIR$/src/store/customers/reducers.ts" />
         <option value="$PROJECT_DIR$/src/store/customers/actions.ts" />
-        <option value="$PROJECT_DIR$/src/store/invoices/selectors.ts" />
         <option value="$PROJECT_DIR$/src/containers/Customers/index.tsx" />
         <option value="$PROJECT_DIR$/src/store/customers/selectors.ts" />
         <option value="$PROJECT_DIR$/src/containers/Invoices/index.tsx" />
         <option value="$PROJECT_DIR$/src/containers/Invoices/invoices.css" />
+        <option value="$PROJECT_DIR$/src/store/invoices/selectors.ts" />
+        <option value="$PROJECT_DIR$/src/components/Header/index.tsx" />
       </list>
     </option>
   </component>
@@ -98,7 +63,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -118,24 +83,6 @@
             <path>
               <item name="joby-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="joby-test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="joby-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="joby-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="joby-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="joby-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="joby-test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="joby-test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="Invoices" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -186,16 +133,15 @@
       <workItem from="1562316510754" duration="157000" />
       <workItem from="1562316742913" duration="3272000" />
       <workItem from="1562321119129" duration="320000" />
-      <workItem from="1562321493126" duration="5010000" />
+      <workItem from="1562321493126" duration="5908000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10658000" />
+    <option name="totallyTimeSpent" value="11556000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19985358" />
@@ -374,13 +320,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Header/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/customers/reducers.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -391,13 +330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/invoices/selectors.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="93" selection-start-line="8" selection-start-column="93" selection-end-line="8" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/customers/selectors.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -405,10 +337,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Customers/index.tsx">
+    <entry file="file://$PROJECT_DIR$/src/containers/Invoices/invoices.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="29" />
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -422,10 +354,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Invoices/invoices.css">
+    <entry file="file://$PROJECT_DIR$/src/store/invoices/selectors.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        <state>
+          <caret column="36" selection-start-column="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Customers/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="8" selection-start-line="8" selection-end-line="17" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="41" column="73" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

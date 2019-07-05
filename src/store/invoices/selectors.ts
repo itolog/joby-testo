@@ -16,5 +16,7 @@ export const getInvoices = (state: AppState) => {
   }
 
   return invoices
-}
+};
+
+export const getActiveInvoices = (state: AppState) => Object.keys(state.invoices.invoices).length;
 
