@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import ProductsPage from './containers/Products/ProductsPage';
@@ -75,7 +75,13 @@ class App extends PureComponent<Props, {}>{
            <main className='main'>
 
              <Switch>
-               <Route path='/' exact  component={MainPage} />
+               <Route exact path="/" render={() => (
+
+                   <Redirect to="/main"/>
+
+               )}/>
+
+               <Route path='/main' exact  component={MainPage} />
                <Route path='/products/' component={ProductsPage} />
                <Route path='/customers/' component={CustomersPage} />
                <Route path='/invoices/'  component={InvoicesPage} />

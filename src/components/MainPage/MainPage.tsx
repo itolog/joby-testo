@@ -1,11 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { Actions } from '../../store/invoices/actions';
 
-import { Actions as ActionsCustomers} from '../../store/customers/actions'
-import { Customers } from '../../store/customers/types';
 
 import { getInvoices } from '../../store/invoices/selectors';
 import { AppState } from '../../store';
@@ -24,7 +22,6 @@ const mapStateToProps = (state: AppState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   setInvoiceId: (id: number) => dispatch(Actions.setCurrentIdInvoice(id)),
-  fetchCustomer: (data: Customers[]) => dispatch(ActionsCustomers.fetchCustomersSuccess(data))
 });
 
 
@@ -36,24 +33,6 @@ type Props =
 
 
 class MainPage extends React.PureComponent<Props,{}> {
-  componentDidMount() {
-    console.log(1)
-    this.props.fetchCustomer([
-      {
-        id: 1,
-        name: 'Jack Mack',
-        address: 'nowiny 34',
-        phone: '+380394567788'
-      },
-      {
-        id: 2,
-        name: 'Lord Bord',
-        address: 'nowiny 2',
-        phone: '+380334533792'
-      }
-
-    ])
-  }
   // Вынести в компонент кнопку
    toView = (id: number) => {
     this.props.history.push(`/view/`);
@@ -93,4 +72,3 @@ class MainPage extends React.PureComponent<Props,{}> {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
-// ({ invoices, history, setInvoiceId, fetchCustomer }: Props)
