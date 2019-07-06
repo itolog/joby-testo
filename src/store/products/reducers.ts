@@ -5,7 +5,7 @@ import * as R from 'ramda';
 
 const initialState: ProductsState = {
   products: {},
-  error: ''
+  error: '',
 };
 
 export function reducer(
@@ -16,6 +16,7 @@ export function reducer(
     case ActionTypes.FETCH_PRODUCTS_SUCCESS: {
       const newValues = R.indexBy(R.prop('id'), action.payload);
       const products = R.merge(state.products, newValues);
+
       return {
         ...state,
         products
