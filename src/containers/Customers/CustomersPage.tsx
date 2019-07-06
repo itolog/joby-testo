@@ -4,26 +4,8 @@ import { connect } from 'react-redux';
 import './customer.css';
 
 import { AppState } from '../../store';
-import  { Customers } from '../../store/customers/types';
-import { Actions } from '../../store/customers/actions';
 import { getCustomers } from '../../store/customers/selectors';
-import { Dispatch } from 'redux';
 
-const data =[
-  {
-    id: 1,
-    name: 'Jack Mack',
-    address: 'nowiny 34',
-    phone: '+380394567788'
-  },
-  {
-    id: 2,
-    name: 'Lord Bord',
-    address: 'nowiny 2',
-    phone: '+380334533792'
-  },
-
-];
 
 // STORE PROPS
 const mapStateToProps = (state: AppState) => {
@@ -31,21 +13,12 @@ const mapStateToProps = (state: AppState) => {
     customers: getCustomers(state)
   };
 };
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchCustomers: (data: Customers[]) => dispatch(Actions.fetchCustomersSuccess(data))
-});
 
 type Props =
   & ReturnType<typeof mapStateToProps>
-  & ReturnType<typeof mapDispatchToProps>
   ;
 
 class CustomersPage extends PureComponent<Props, {}> {
-
-  public componentDidMount() {
-    this.props.fetchCustomers(data)
-  };
-
   public render() {
     const { customers } = this.props;
     return (
@@ -71,4 +44,4 @@ class CustomersPage extends PureComponent<Props, {}> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CustomersPage);
+export default connect(mapStateToProps)(CustomersPage);

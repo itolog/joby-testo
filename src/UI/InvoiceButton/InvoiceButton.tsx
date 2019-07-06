@@ -6,7 +6,7 @@ import './invoiceButton.css';
 export default function InvoiceButton() {
     return (
        <div className='wrapp-button'>
-            <Link to='/'  className='invoice-button'>
+            <Link to='/createInvoice/'  className='invoice-button'>
                 <span className='btn-plus'>+</span>
                 <span>New Invoice</span>
             </Link>

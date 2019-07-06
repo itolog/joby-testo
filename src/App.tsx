@@ -8,7 +8,8 @@ import InvoicesPage from './containers/Invoices/InvoicesPage';
 import Header from './components/Header';
 import NoMatch from './components/NoMatch';
 import MainPage from './components/MainPage/MainPage';
-import ViewPage from './containers/ViewPage'
+import ViewPage from './containers/ViewPage';
+import CreateInvoice from './containers/CreateInvoice/CreacteInvoice '
 
 import './App.css';
 
@@ -18,6 +19,7 @@ import { Actions as ActionsP } from './store/products/actions';
 import { Customers } from './store/customers/types';
 import { Products } from './store/products/types';
 import { Dispatch } from 'redux';
+
 const data = [
   {
     id: 1,
@@ -86,6 +88,7 @@ class App extends PureComponent<Props, {}>{
                <Route path='/customers/' component={CustomersPage} />
                <Route path='/invoices/'  component={InvoicesPage} />
                <Route path='/view/' component={ViewPage} />
+               <Route path='/createInvoice/' component={CreateInvoice} />
                <Route component={NoMatch}/>
              </Switch>
            </main>

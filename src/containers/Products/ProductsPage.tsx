@@ -4,28 +4,6 @@ import { connect } from 'react-redux';
 import './products.css';
 import { AppState } from '../../store';
 import { getProducts, getErrorProducts } from '../../store/products/selectors';
-import { Products } from '../../store/products/types';
-import { Actions } from '../../store/products/actions';
-import { Dispatch } from 'redux';
-
-
-const data = [
-  {
-    id: 1,
-    name: 'motorola droid',
-    price: 300
-  }, {
-    id: 2,
-    name: 'motorola maxx',
-    price: 500
-  },
-  {
-    id: 3,
-    name: 'motorola ultra',
-    price: 350
-  }
-
-];
 
 
 // STORE PROPS
@@ -36,25 +14,12 @@ const mapStateToProps = (state: AppState) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchCustomers: (data: Products[]) => dispatch(Actions.fetchProductsSuccess(data)),
-  fetchCustomersError: (data: any) => dispatch(Actions.fetchProductsError(data))
-});
-
 type Props =
   & ReturnType<typeof mapStateToProps>
-  & ReturnType<typeof mapDispatchToProps>
   ;
 
 class ProductsPage extends Component<Props, {}> {
 
-  componentDidMount() {
-    try {
-      this.props.fetchCustomers(data);
-    } catch (e) {
-      this.props.fetchCustomersError(e.message)
-    }
-  };
 
   public render() {
     const { products, error } = this.props;
@@ -85,4 +50,4 @@ class ProductsPage extends Component<Props, {}> {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);
+export default connect(mapStateToProps)(ProductsPage);
