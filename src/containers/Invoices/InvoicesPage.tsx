@@ -5,6 +5,8 @@ import { History } from 'history';
 import './invoices.css';
 import { getInvoices } from '../../store/invoices/selectors';
 import { AppState } from '../../store';
+import { Dispatch } from 'redux';
+import { Actions } from '../../store/invoices/actions';
 
 
 interface Router {
@@ -17,20 +19,25 @@ const mapStateToProps = (state: AppState) => {
     invoices: getInvoices(state)
   };
 };
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  setInvoiceId: (id: number) => dispatch(Actions.setCurrentIdInvoice(id))
+});
 
 type Props =
   & ReturnType<typeof mapStateToProps>
   & Router
+  & ReturnType<typeof mapDispatchToProps>
   ;
 
 
-class Invoices extends PureComponent<Props, {}> {
+class InvoicesPage extends PureComponent<Props, {}> {
 
-  public toView = () => {
-    this.props.history.push(`/view`);
+  toView = (id: number) => {
+    this.props.history.push(`/view/`);
+    this.props.setInvoiceId(id);
   };
 
-  public toEdit = () => {
+  toEdit = () => {
     this.props.history.push(`/edit`);
   };
 
@@ -55,7 +62,7 @@ class Invoices extends PureComponent<Props, {}> {
                 <td>{item.discount}</td>
                 <td>{item.total}</td>
                 <td>
-                  <button className='invoices-btn invoices-btn--view' onClick={this.toView}>View</button>
+                  <button className='invoices-btn invoices-btn--view' onClick={() => this.toView(item.id)}>View</button>
                   <button className='invoices-btn invoices-btn--edit' onClick={this.toEdit}>Edit</button>
                   <button className='invoices-btn invoices-btn--delete'>Delete</button>
                 </td>
@@ -69,4 +76,4 @@ class Invoices extends PureComponent<Props, {}> {
   }
 }
 
-export default connect(mapStateToProps)(Invoices);
+export default connect(mapStateToProps, mapDispatchToProps)(InvoicesPage);

@@ -1,21 +1,10 @@
 import { CustomersState } from './types';
 import { ActionTypeUnion, ActionTypes } from './actions';
+import * as R from 'ramda';
 
 const initialState: CustomersState = {
-  customers: {
-    1: {
-      id: 1,
-      name: 'Jack Mack',
-      address: 'nowiny 34',
-      phone: '+380394567788'
-    },
-    2: {
-      id: 2,
-      name: 'Lord Bord',
-      address: 'nowiny 2',
-      phone: '+380334533792'
-    }
-  }
+  customers: {},
+  error: ''
 };
 
 export function reducer(
@@ -23,6 +12,20 @@ export function reducer(
   action: ActionTypeUnion
 ): CustomersState {
   switch (action.type) {
+    case ActionTypes.FETCH_CUSTOMERS_SUCCESS: {
+      const newValues = R.indexBy(R.prop('id'), action.payload);
+      const customers = R.merge(state.customers, newValues);
+      return {
+        ...state,
+        customers
+      }
+    }
+    case ActionTypes.FETCH_CUSTOMERS_FAILURE: {
+      return {
+        ...state,
+        error: action.payload
+      }
+    }
     default: {
       return state;
     }

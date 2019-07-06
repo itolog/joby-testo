@@ -7,5 +7,6 @@ export interface Products {
 export interface ProductsState {
   products: {
     [id: number]: Products
-  }
+  },
+  error: string
 }

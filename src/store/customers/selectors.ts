@@ -16,3 +16,5 @@ export const getCustomers = (state: AppState) => {
 
   return customers;
 };
+
+export const getCustomersError = (state: AppState) => state.customers.error;

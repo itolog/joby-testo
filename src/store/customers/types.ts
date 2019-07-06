@@ -8,5 +8,6 @@ export interface Customers {
 export interface CustomersState {
    customers: {
      [id: number]: Customers
-   }
+   },
+  error: ''
 }

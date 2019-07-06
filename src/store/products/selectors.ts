@@ -2,6 +2,8 @@ import { AppState } from '../index';
 
 export const getProductState = (state: AppState) => state.products.products;
 
+export const getErrorProducts = (state: AppState) => state.products.error;
+
 export const getProducts = (state: AppState) => {
   const products = [];
   for (const key in state.products.products){
