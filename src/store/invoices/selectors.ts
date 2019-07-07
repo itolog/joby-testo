@@ -1,4 +1,5 @@
 import { AppState } from '../index';
+import * as R from "ramda";
 
 export const getInvoices = (state: AppState) => {
   const invoices = [];
@@ -22,4 +23,9 @@ export const getActiveInvoices = (state: AppState) => Object.keys(state.invoices
 
 export const getInvoiceById = (state: AppState) =>  {
   return state.invoices.invoices[state.invoices.currentIdInvoice]
+};
+
+export const genereteNextIdInvoice = (state: AppState) => {
+  const ar = R.keys(state.invoices.invoices).map(Number);
+  return Math.max.apply(null, ar);
 };

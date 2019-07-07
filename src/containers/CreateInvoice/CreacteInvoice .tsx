@@ -1,21 +1,28 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import * as R from 'ramda'
+
 import { getCustomers } from '../../store/customers/selectors';
 import { getProducts } from '../../store/products/selectors';
+import { genereteNextIdInvoice } from '../../store/invoices/selectors'
 import { AppState } from '../../store';
 
 import './createInvoice.css'
 
 interface State {
   optionRefName: string,
-  optionRefProduct: string
+  optionRefProduct: string,
+  optionRefQty: number,
+  price: number,
+  discount: number
 }
 
 // STORE PROPS
 const mapStateToProps = (state: AppState) => {
   return {
     customers: getCustomers(state),
-    products: getProducts(state)
+    products: getProducts(state),
+    nextIDs: genereteNextIdInvoice(state)
   };
 };
 
@@ -27,9 +34,19 @@ class CreacteInvoice  extends PureComponent<Props, State> {
 
   public state = {
     optionRefName: '',
-    optionRefProduct: ''
+    optionRefProduct: '',
+    optionRefQty: 1,
+    price: 1,
+    discount: 0
   };
 
+  public componentDidUpdate(prevProps: any, prevState: any) {
+    if(prevState.optionRefProduct !== this.state.optionRefProduct || prevState.optionRefQty !== this.state.optionRefQty) {
+      this.setState({
+        price: this.props.products[Number(this.state.optionRefProduct) -1].price * this.state.optionRefQty
+      })
+    }
+  }
   public handleOptionSelectName = (e: React.ChangeEvent<HTMLSelectElement>) => {
     this.setState({
       optionRefName: e.target.value
@@ -43,17 +60,21 @@ class CreacteInvoice  extends PureComponent<Props, State> {
     });
   };
 
-  public handleOptionSelectQut = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value)
+  public handleOptionSelectQut = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    this.setState({
+      optionRefQty:  Number(e.target.value)
+    })
   };
 
   render() {
-    const { customers } = this.props;
+    const { customers, products } = this.props;
+    const rangeQty = R.range(1,10);
     console.log(this.state);
     return (
       <div className='view-container'>
         <div className='view-left'>
-          <h4 className='viev-title-id'>Invoice #4</h4>
+          <h4 className='viev-title-id'>Invoice #{this.props.nextIDs +1}</h4>
           <div className='view-text-content'>
             <div className='select-style'>
               <select className='name-select' onChange={this.handleOptionSelectName}>
@@ -77,27 +98,39 @@ class CreacteInvoice  extends PureComponent<Props, State> {
               </tr>
               <tr>
                 <td className='select-style'>
-                  <select className='name-select' onChange={this.handleOptionSelectProduct}>
-                    {this.props.products.map((item: any) => {
+                  <select className='name-select' onChange={this.handleOptionSelectProduct} defaultValue='2'>
+                    {products.map((item: any) => {
                       return (
                         <option
                           key={item.id}
+                          // selected={'motorola maxx' ? true: false}
                           value={item.id}>{item.name}</option>
                       )
                     })}
                   </ select>
                 </td>
-                <td>
+                <td className='item-focus'>
                   <div className="select-editable">
                     <select className="select-editable" onChange={this.handleOptionSelectQut}>
-                      <option value="115x175 mm">11</option>
-                      <option value="120x160 mm">12</option>
-                      <option value="120x287 mm">12</option>
+                      {rangeQty.map((val: any) => {
+                        return (
+                          <option key={val} value={val}>{val}</option>
+                        )
+                      })}
                     </select>
-                    <input maxLength={2} type="text" name="format" placeholder='0' />
+                    <input
+                      className='item-focus'
+                      maxLength={2}
+                      type="text"
+                      name="format"
+                      onChange={this.handleOptionSelectQut}
+                      value={this.state.optionRefQty}
+                      />
                   </div>
                 </td>
-                <td>500</td>
+                <td  className='item-focus'>{
+                  this.state.price
+                }</td>
               </tr>
               </tbody>
             </table>
