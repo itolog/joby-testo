@@ -7,7 +7,8 @@ import { AppState } from '../../store';
 import './createInvoice.css'
 
 interface State {
-  optionRef: string
+  optionRefName: string,
+  optionRefProduct: string
 }
 
 // STORE PROPS
@@ -23,34 +24,42 @@ type Props =
   ;
 
 class CreacteInvoice  extends PureComponent<Props, State> {
-  private optionRef: React.RefObject<HTMLOptionElement> = React.createRef();
 
   public state = {
-    optionRef: ''
+    optionRefName: '',
+    optionRefProduct: ''
   };
 
-  public handleOptionSelect = (e: any) => {
+  public handleOptionSelectName = (e: React.ChangeEvent<HTMLSelectElement>) => {
     this.setState({
-      optionRef: e.target.value
+      optionRefName: e.target.value
     });
 
   };
 
+  public handleOptionSelectProduct = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    this.setState({
+      optionRefProduct: e.target.value
+    });
+  };
+
+  public handleOptionSelectQut = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(e.target.value)
+  };
+
   render() {
     const { customers } = this.props;
-    console.log(this.state.optionRef);
-
+    console.log(this.state);
     return (
       <div className='view-container'>
         <div className='view-left'>
           <h4 className='viev-title-id'>Invoice #4</h4>
           <div className='view-text-content'>
             <div className='select-style'>
-              <select  onChange={this.handleOptionSelect}>
-                {customers.map(item => {
+              <select className='name-select' onChange={this.handleOptionSelectName}>
+                {customers.map((item: any) => {
                   return (
                     <option
-                      ref={this.optionRef}
                       key={item.id}
                       value={item.id}>{item.name}</option>
                   )
@@ -68,18 +77,26 @@ class CreacteInvoice  extends PureComponent<Props, State> {
               </tr>
               <tr>
                 <td className='select-style'>
-                  <select  onChange={this.handleOptionSelect}>
-                    {this.props.products.map(item => {
+                  <select className='name-select' onChange={this.handleOptionSelectProduct}>
+                    {this.props.products.map((item: any) => {
                       return (
                         <option
-                          ref={this.optionRef}
                           key={item.id}
                           value={item.id}>{item.name}</option>
                       )
                     })}
                   </ select>
                 </td>
-                <td>2</td>
+                <td>
+                  <div className="select-editable">
+                    <select className="select-editable" onChange={this.handleOptionSelectQut}>
+                      <option value="115x175 mm">11</option>
+                      <option value="120x160 mm">12</option>
+                      <option value="120x287 mm">12</option>
+                    </select>
+                    <input maxLength={2} type="text" name="format" placeholder='0' />
+                  </div>
+                </td>
                 <td>500</td>
               </tr>
               </tbody>

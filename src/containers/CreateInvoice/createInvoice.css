@@ -6,7 +6,36 @@
     /*background: #fafafa;*/
 /*}*/
 
-select {
+
+.select-editable {
+    position:relative;
+    background-color:white;
+    width:36px;
+    height:18px;
+}
+.select-editable select {
+    position:absolute;
+    top:0px;
+    left:0px;
+    font-size:14px;
+    border:none;
+    width:36px;
+    margin:0;
+}
+.select-editable input {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:16px;
+    padding:1px;
+    font-size:12px;
+    border:none;
+}
+.select-editable select:focus, .select-editable input:focus {
+    outline:none;
+}
+
+.name-select {
     width: 100%;
     font-size: .9rem;
     padding: 7px 88px;
