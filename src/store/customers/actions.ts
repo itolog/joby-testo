@@ -15,7 +15,7 @@ export const Actions = {
   fetchCustomersError: (payload: any) => action(ActionTypes.FETCH_CUSTOMERS_FAILURE, payload)
 };
 
-export const fetchCustomers =  () => (dispatch: Dispatch)=> {
+export const fetchCustomers =  () => (dispatch: Dispatch) => {
   dispatch(Actions.fetchCustomersStart());
    fetchCustomerService()
     .then((data: any) => {

@@ -10,13 +10,20 @@ export const getInvoices = createSelector(
   (state: InvoiseState) => Object.values(state.invoices)
 );
 
-export const getActiveInvoices = (state: AppState) => Object.keys(state.invoices.invoices).length;
+export const getActiveInvoices = createSelector(
+  [getInvoiceState],
+  (state: InvoiseState) => Object.keys(state.invoices).length
+);
 
-export const getInvoiceById = (state: AppState) =>  {
-  return state.invoices.invoices[state.invoices.currentIdInvoice]
-};
+export const getInvoiceById = createSelector(
+  getInvoiceState,
+  (state: InvoiseState) => state.invoices[state.currentIdInvoice]
+);
 
-export const genereteNextIdInvoice = (state: AppState) => {
-  const invoiceIdsArray = Object.keys(state.invoices.invoices).map(Number);
-  return Math.max.apply(null, invoiceIdsArray);
-};
+export const genereteNextIdInvoice = createSelector(
+  getInvoiceState,
+  (state: InvoiseState) => {
+    const invoiceIdsArray = Object.keys(state.invoices).map(Number);
+    return Math.max.apply(null, invoiceIdsArray);
+  }
+);

@@ -2,6 +2,8 @@ import { action, ActionType } from 'typesafe-actions';
 import { Products } from './types';
 import { Dispatch } from 'redux';
 import { fetchProductsService } from '../../shared/services/fetchService'
+import { ThunkAction } from 'redux-thunk';
+import { AppState } from '../index';
 
 export enum ActionTypes {
   FETCH_PRODUCTS_START = ' FETCH_PRODUCTS_START,',
@@ -15,10 +17,10 @@ export const Actions = {
   fetchProductsError: (error: string) => action(ActionTypes.FETCH_PRODUCTS_FAILURE, error)
 };
 
-export const fetchProducts = () => (dispatch: Dispatch) => {
+export const fetchProducts = (): ThunkAction<void, AppState, null, ActionTypeUnion> => async(dispatch: Dispatch) => {
   dispatch(Actions.fetchProductsStart());
 
-  fetchProductsService()
+  await fetchProductsService()
     .then((data: any) => {
       dispatch(Actions.fetchProductsSuccess(data))
     })
