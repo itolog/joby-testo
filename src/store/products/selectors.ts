@@ -1,10 +1,24 @@
+import { createSelector } from 'reselect';
+
 import { AppState } from '../index';
-import * as R from 'ramda';
+import { ProductsState } from './types';
 
-export const getProductState = (state: AppState) => state.products.products;
 
-export const getErrorProducts = (state: AppState) => state.products.error;
+export const getProductState = (state: AppState) => state.products;
 
-export const getProducts = (state: AppState) => {
-  return R.values(state.products.products);
-};
+export const getErrorProducts = createSelector(
+  getProductState,
+  (state: ProductsState) => state.error
+);
+
+export const getProducts = createSelector(
+  getProductState,
+  (state: ProductsState) => {
+    return  state.ids.map((id) => state.products[id])
+  }
+);
+
+export const isLoadingProdacts = createSelector(
+  getProductState,
+  (state: ProductsState) => state.isLoading
+);

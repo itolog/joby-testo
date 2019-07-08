@@ -1,10 +1,11 @@
 import { CustomersState } from './types';
 import { ActionTypeUnion, ActionTypes } from './actions';
-import * as R from 'ramda';
 
 const initialState: CustomersState = {
   customers: {},
-  error: ''
+  ids: [],
+  error: null,
+  isLoading: true
 };
 
 export function reducer(
@@ -13,10 +14,17 @@ export function reducer(
 ): CustomersState {
   switch (action.type) {
     case ActionTypes.FETCH_CUSTOMERS_SUCCESS: {
-      const newValues = R.indexBy(R.prop('id'), action.payload);
-      const customers = R.merge(state.customers, newValues);
+      const customers = action.payload.reduce((acc, customer) => ({
+        ...acc,
+        [customer.id]: customer,
+      }), state.customers);
+
+      const ids = Object.keys(customers).map(Number);
+
       return {
         ...state,
+        ids,
+        isLoading: false,
         customers
       }
     }

@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 
 import './header.css';
 
-import InvoiceButton from '../../UI/InvoiceButton/InvoiceButton';
+import InvoiceButton from '../InvoiceButton/InvoiceButton';
 import Logo from '../Logo';
-import { getActiveInvoices } from '../../store/invoices/selectors';
-import { AppState } from '../../store';
+import { getActiveInvoices } from '../../../store/invoices/selectors';
+import { AppState } from '../../../store';
 
 interface Invoices {
   activeInvoicesCount: number

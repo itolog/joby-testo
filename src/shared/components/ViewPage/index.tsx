@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import discountCalculator from '../../Utils/discountCalculator';
-import { getInvoiceById } from '../../store/invoices/selectors';
-import { getCustomers } from '../../store/customers/selectors';
-import { getProductState } from '../../store/products/selectors';
-import { AppState } from '../../store';
+import discountCalculator from '../../utils/discountCalculator';
+import { getInvoiceById } from '../../../store/invoices/selectors';
+import { getCustomers } from '../../../store/customers/selectors';
+import { getProductState } from '../../../store/products/selectors';
+import { AppState } from '../../../store';
 
 import './viewPage.css';
 
@@ -26,19 +26,20 @@ class ViewPage extends PureComponent<Props, {}> {
   public total = () => {
     let i = [];
     for(let item of this.props.invoice.items) {
-      i.push(this.props.products[item.product_id].price * item.quantity)
+      i.push(this.props.products.products[item.product_id].price * item.quantity)
     }
     const res = i.reduce((a, b) => a + b);
    return discountCalculator(res, this.props.invoice.discount)
   };
 
   public prodItems = () => {
+    const { products } = this.props;
    return this.props.invoice.items.map(item => {
       return (
         <tr key={item.id}>
-          <td className='view-text-content'>{this.props.products[item.product_id].name}</td>
+          <td className='view-text-content'>{products.products[item.product_id].name}</td>
           <td className='view-text-content'>{item.quantity}</td>
-          <td className='view-text-content'>{this.props.products[item.product_id].price * item.quantity} $</td>
+          <td className='view-text-content'>{products.products[item.product_id].price * item.quantity} $</td>
         </tr>
       );
     })
@@ -46,6 +47,7 @@ class ViewPage extends PureComponent<Props, {}> {
 
   public render() {
     const { invoice, customer } = this.props;
+    console.log(this.props)
     if (invoice) {
       return (
         <div className='view-container'>

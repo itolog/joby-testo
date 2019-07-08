@@ -9,5 +9,7 @@ export interface CustomersState {
    customers: {
      [id: number]: Customers
    },
-  error: ''
+  ids: number[],
+  error: string | null,
+  isLoading: boolean
 }

@@ -1,16 +1,8 @@
-/*.select-style {*/
-/*border: 1px solid #ccc;*/
-/*width: 120px;*/
-/*border-radius: 3px;*/
-/*overflow: hidden;*/
-/*background: #fafafa;*/
-/*}*/
-
 .select-editable {
     position: relative;
-    background-color: white;
     width: 36px;
     height: 18px;
+    background: #D9D9D9
 }
 
 .select-editable select {

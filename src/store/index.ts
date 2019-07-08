@@ -6,6 +6,9 @@ import { reducer as productsReducer } from "./products/reducers";
 import { reducer as customersReducer } from "./customers/reducers";
 import { reducer as invoicesReducer } from "./invoices/reducers";
 
+import { fetchCustomers } from './customers/actions';
+import { fetchProducts } from './products/actions';
+
 const reducer = combineReducers({
   products: productsReducer,
   customers: customersReducer,
@@ -23,6 +26,10 @@ function configureStore(preloadedState: any) {
 
   const store = createStore(reducer, preloadedState, composedEnhancers);
 
+  store.dispatch<any>(fetchCustomers());
+  store.dispatch<any>(fetchProducts());
+
   return store;
 }
+
 export const rootStore = configureStore(undefined);

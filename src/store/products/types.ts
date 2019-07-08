@@ -8,5 +8,7 @@ export interface ProductsState {
   products: {
     [id: number]: Products
   },
-  error: string
+  error: string | null,
+  ids: number[],
+  isLoading: boolean
 }

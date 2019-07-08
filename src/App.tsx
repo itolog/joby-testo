@@ -1,82 +1,57 @@
 import React, { PureComponent } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import axios from 'axios';
 
-import ProductsPage from './containers/Products/ProductsPage';
-import CustomersPage from './containers/Customers/CustomersPage';
-import InvoicesPage from './containers/Invoices/InvoicesPage';
-import Header from './components/Header';
-import NoMatch from './components/NoMatch';
+import ProductsPage from './components/Products/ProductsPage';
+import CustomersPage from './components/Customers/CustomersPage';
+import InvoicesPage from './components/Invoices/InvoicesPage';
+import Header from './shared/components/Header';
+import NoMatch from './shared/components/NoMatch';
 import MainPage from './components/MainPage/MainPage';
-import ViewPage from './containers/ViewPage';
-import CreateInvoice from './containers/CreateInvoice/CreacteInvoice '
+import ViewPage from './shared/components/ViewPage';
+import CreateInvoice from './components/CreateInvoice/CreacteInvoice '
+
 
 import './App.css';
 
-import { Actions as ActionsC } from './store/customers/actions';
-import { Actions as ActionsP } from './store/products/actions';
 
-import { Customers } from './store/customers/types';
-import { Products } from './store/products/types';
-
-interface State {
-  isLoaded: boolean,
-  error: string,
-  isError: boolean
-}
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchCustomers: (data: Customers[]) => dispatch(ActionsC.fetchCustomersSuccess(data)),
-  fetchProducts: (data: Products[]) => dispatch(ActionsP.fetchProductsSuccess(data))
-});
+import { AppState } from './store';
+// Selectors import
+import { getCustomersError, isLoadingCustomer } from './store/customers/selectors';
+import { getErrorProducts, isLoadingProdacts } from './store/products/selectors'
 
 
-type Props = & ReturnType<typeof mapDispatchToProps>;
-
-
-class App extends PureComponent<Props, State>{
-  public state = {
-    isLoaded: false,
-    isError: false,
-    error: ''
+const mapStateToProps = (state: AppState) => {
+  return {
+    // customers
+    customersError: getCustomersError(state),
+    isLoadingCustomer: isLoadingCustomer(state),
+    // products
+    productsError: getErrorProducts(state),
+    isLoadingProdacts: isLoadingProdacts(state)
   };
+};
 
-  componentDidMount() {
-    this.fetchDataFromServer()
-  }
 
-  public fetchDataFromServer = () => {
-    axios.get('http://www.mocky.io/v2/5d21cc652f00006f2cc46338')
-      .then(({data}: any) => {
-        this.props.fetchCustomers(data.customers);
-        this.props.fetchProducts(data.products);
+type Props =
+  & ReturnType<typeof mapStateToProps>
+  ;
 
-        this.setState({
-          isLoaded: true
-        })
-      })
-      .catch(e => {
-        console.log(e.message);
-        this.setState({
-          isError: true,
-          error: e.message
-        })
-      });
-  };
-
+class App extends PureComponent<Props, {}>{
  public render() {
+   const {isLoadingProdacts, isLoadingCustomer, customersError, productsError} = this.props;
    return (
      <Router>
        <div className='App'>
          <div className='container'>
            <Header />
-           {!this.state.isLoaded && <h1>Loading ...</h1>}
+           {isLoadingProdacts && isLoadingCustomer && <h1>Loading ...</h1>}
            {/*  ERROR  CONTENT */}
-           {this.state.error && <h2>{this.state.error}</h2>}
+           {customersError && <h2>{customersError}</h2>}
+           {productsError && <h2>{productsError}</h2>}
            {/*  MAIN CONTENT */}
-           {this.state.isLoaded && <main className='main'>
+           {!isLoadingProdacts &&  !isLoadingCustomer &&
+           <main className='main'>
              <Switch>
                <Route path='/' exact  component={MainPage} />
                <Route path='/products/' component={ProductsPage} />
@@ -95,4 +70,4 @@ class App extends PureComponent<Props, State>{
  }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

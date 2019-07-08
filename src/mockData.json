@@ -1,0 +1,35 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "motorola droid",
+      "price": "300"
+    }, {
+      "id": "2",
+      "name": "motorola maxx",
+      "price": "500"
+    },
+    {
+      "id": "3",
+      "name": "motorola ultra",
+      "price": "350"
+    }
+
+  ],
+  "customers": [
+    {
+      "id": "1",
+      "name": "Jack Mack",
+      "address": "nowiny 34",
+      "phone": "+380394567788"
+    },
+    {
+      "id": "2",
+      "name": "Lord Bord",
+      "address": "nowiny 2",
+      "phone": "+380334533792"
+    }
+
+  ]
+
+}

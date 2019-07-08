@@ -52,7 +52,7 @@ export function reducer(
   action: ActionTypeUnion
 ): InvoiseState {
   switch (action.type) {
-    case ActionTypes.CURRENT_ID_INVOICE: {
+    case ActionTypes.SET_CURRENT_ID_INVOICE: {
       return {
         ...state,
         currentIdInvoice: action.payload

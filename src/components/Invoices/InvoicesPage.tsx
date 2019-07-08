@@ -4,6 +4,7 @@ import { History } from 'history';
 
 import './invoices.css';
 import { getInvoices } from '../../store/invoices/selectors';
+import { getCustomersState } from '../../store/customers/selectors'
 import { AppState } from '../../store';
 import { Dispatch } from 'redux';
 import { Actions } from '../../store/invoices/actions';
@@ -16,7 +17,8 @@ interface Router {
 // STORE PROPS
 const mapStateToProps = (state: AppState) => {
   return {
-    invoices: getInvoices(state)
+    invoices: getInvoices(state),
+    customer: getCustomersState(state)
   };
 };
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -42,7 +44,8 @@ class InvoicesPage extends PureComponent<Props, {}> {
   };
 
   public render() {
-    const { invoices } = this.props;
+    const { invoices, customer } = this.props;
+    console.log(customer);
     return (
       <div className='invoices'>
         <table className='table'>
@@ -58,7 +61,7 @@ class InvoicesPage extends PureComponent<Props, {}> {
             return (
               <tr key={item.id.toString()}>
                 <td>{item.id}</td>
-                <td>{item.customer_id}</td>
+                <td>{customer.customers[item.customer_id].name}</td>
                 <td>{item.discount}</td>
                 <td>{item.total}</td>
                 <td>
