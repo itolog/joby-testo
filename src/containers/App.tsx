@@ -2,23 +2,23 @@ import React, { PureComponent } from 'react';
 import { BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import ProductsPage from './components/Products/ProductsPage';
-import CustomersPage from './components/Customers/CustomersPage';
-import InvoicesPage from './components/Invoices/InvoicesPage';
-import Header from './shared/components/Header';
-import NoMatch from './shared/components/NoMatch';
-import MainPage from './components/MainPage/MainPage';
-import ViewPage from './shared/components/ViewPage';
-import CreateInvoice from './components/CreateInvoice/CreacteInvoice '
+import ProductsPage from './Products/ProductsPage';
+import CustomersPage from './Customers/CustomersPage';
+import InvoicesPage from './Invoices/InvoicesPage';
+import Header from './components/Header';
+import NoMatch from './NoMatch';
+import MainPage from './MainPage/MainPage';
+import ViewPage from '../shared/components/ViewPage';
+import CreateInvoice from './CreateInvoice/CreacteInvoice '
 
 
 import './App.css';
 
 
-import { AppState } from './store';
+import { AppState } from '../store';
 // Selectors import
-import { getCustomersError, isLoadingCustomer } from './store/customers/selectors';
-import { getErrorProducts, isLoadingProdacts } from './store/products/selectors'
+import { getCustomersError, isLoadingCustomer } from '../store/customers/selectors';
+import { getErrorProducts, isLoadingProdacts } from '../store/products/selectors'
 
 
 const mapStateToProps = (state: AppState) => {

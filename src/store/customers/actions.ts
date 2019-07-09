@@ -1,11 +1,11 @@
 import { Dispatch } from 'redux';
 import { action, ActionType } from 'typesafe-actions';
 import { Customers } from './types';
-import { fetchCustomerService } from '../../shared/services/fetchService';
+import customersService from '../../shared/services/customersService';
 
 export enum ActionTypes {
-  FETCH_CUSTOMERS_START = 'FETCH_CUSTOMERS_START,',
-  FETCH_CUSTOMERS_SUCCESS = 'FETCH_CUSTOMERS_SUCCESS,',
+  FETCH_CUSTOMERS_START = 'FETCH_CUSTOMERS_START',
+  FETCH_CUSTOMERS_SUCCESS = 'FETCH_CUSTOMERS_SUCCESS',
   FETCH_CUSTOMERS_FAILURE = 'FETCH_CUSTOMERS_FAILURE',
 }
 
@@ -17,7 +17,7 @@ export const Actions = {
 
 export const fetchCustomers =  () => (dispatch: Dispatch) => {
   dispatch(Actions.fetchCustomersStart());
-   fetchCustomerService()
+  customersService.getCustomers()
     .then((data: any) => {
       dispatch(Actions.fetchCustomersSuccess(data))
     })

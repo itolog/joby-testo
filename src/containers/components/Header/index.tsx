@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 
 import './header.css';
 
-import InvoiceButton from '../InvoiceButton/InvoiceButton';
-import Logo from '../Logo';
+import InvoiceButton from '../../../shared/components/InvoiceButton/InvoiceButton';
+import Logo from './Logo';
 import { getActiveInvoices } from '../../../store/invoices/selectors';
 import { AppState } from '../../../store';
 

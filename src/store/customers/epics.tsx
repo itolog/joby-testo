@@ -1,27 +1,31 @@
-// import { Epic } from 'redux-observable';
-// import { from, of } from 'rxjs';
-// import { switchMap, filter, map, catchError } from 'rxjs/operators';
+import { ofType } from 'redux-observable';
+import { Observable } from 'rxjs';
 // import { isActionOf } from 'typesafe-actions';
 //
 // import { AppState } from '../index';
 //
-// import { ActionTypeUnion } from './actions';
+import {  ActionTypes, ActionTypeUnion } from './actions';
+// import { mergeMap } from 'rxjs/operators';
 //
-// import  { fetchCustomerServiceSO } from '../../shared/services/fetchService';
-//
-// import { ActionTypes, Actions } from './actions'
-//
-// export const fetchCustomers: Epic<ActionTypeUnion, ActionTypeUnion, AppState> = (action$: any)  =>
-//   action$.pipe(
-//     filter(isActionOf(Actions.fetchCustomersStart)),
-//     switchMap((action) => {
-//       from(fetchCustomerServiceSO()).pipe(
-//         map((data: any) => {
-//           Actions.fetchCustomersSuccess(data.customers)
-//         }),
-//         catchError(error => of(Actions.fetchCustomersError(error)))
-//       )
-//     })
-// );
+// import { Customers } from './types';
+// import { AppState } from '../index';
 
-export {}
+
+export const fetchCustomersEpic = (action$: Observable<ActionTypeUnion>):  Observable<ActionTypeUnion> => {
+  return action$.pipe(
+    ofType(ActionTypes.FETCH_CUSTOMERS_START)
+    // mergeMap(action => {
+    //   return Actions.fetchCustomersSuccess(action.payload)
+    // })
+    // filter(isOfType(ActionTypes.FETCH_CUSTOMERS_START)),
+    // mapTo(Actions.fetchCustomersSuccess(fetchCustomerServiceSO()))
+  );
+};
+
+  //   switchMap(action =>
+  //     from(fetchCustomerServiceSO()).pipe(
+  //       map((res: any) => Actions.fetchCustomersSuccess(res)),
+  //       catchError(error => of(Actions.fetchCustomersError(error)))
+  //     ),
+  //   )
+  // );

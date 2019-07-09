@@ -1,11 +1,5 @@
 import axios from 'axios';
-// import data from '../../mockData.json';
-
-// export const fetchCustomerService = () => {
-//   return new Promise((resolve, reject) => {
-//     resolve(data.customers)
-//   })
-// };
+import data from '../../mockData.json';
 
 export const fetchCustomerService = () => {
   return new Promise((resolve, reject) => {
@@ -19,10 +13,6 @@ export const fetchCustomerService = () => {
   })
 };
 
-// export const fetchCustomerServiceSO = (): any => {
-//     axios.get('http://www.mocky.io/v2/5d21cc652f00006f2cc46338')
-// };
-
 
 export const fetchProductsService = () => {
   return new Promise((resolve, reject) => {
@@ -35,6 +25,26 @@ export const fetchProductsService = () => {
       });
   })
 };
+
+
+
+
+//
+// export const fetchService = () => {
+//   return new Promise((resolve) => {
+//     resolve(data);
+//   })
+// };
+
+
+// export const fetchCustomerServiceSO = (): any => {
+//     return data.customers
+// };
+export const fetchCustomerServiceSO = (): any => {
+    return data.customers
+};
+
+
 
 // export const fetchProductsService = () => {
 //   return new Promise((resolve, reject) => {

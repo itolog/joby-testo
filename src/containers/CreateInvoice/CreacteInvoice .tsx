@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { range } from 'ramda';
 
 import { getCustomers } from '../../store/customers/selectors';
 import { getProducts } from '../../store/products/selectors';
@@ -80,8 +79,8 @@ class CreacteInvoice  extends PureComponent<Props, State> {
 
   render() {
     const { customers, products } = this.props;
-    const rangeQty = range(1,10);
-    const rangeDiscaunt = range(1, 51);
+    const rangeQty = [1,2,3];
+    const rangeDiscaunt = [1,2,3];
 
     console.log(this.state);
     return (

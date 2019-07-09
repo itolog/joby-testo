@@ -1,9 +1,10 @@
 import { action, ActionType } from 'typesafe-actions';
 import { Products } from './types';
 import { Dispatch } from 'redux';
-import { fetchProductsService } from '../../shared/services/fetchService'
 import { ThunkAction } from 'redux-thunk';
 import { AppState } from '../index';
+
+import productsService from '../../shared/services/productsService'
 
 export enum ActionTypes {
   FETCH_PRODUCTS_START = ' FETCH_PRODUCTS_START,',
@@ -20,7 +21,7 @@ export const Actions = {
 export const fetchProducts = (): ThunkAction<void, AppState, null, ActionTypeUnion> => async(dispatch: Dispatch) => {
   dispatch(Actions.fetchProductsStart());
 
-  await fetchProductsService()
+  await productsService.getProducts()
     .then((data: any) => {
       dispatch(Actions.fetchProductsSuccess(data))
     })

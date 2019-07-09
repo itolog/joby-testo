@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Dispatch } from 'redux';
+import { compose, Dispatch } from 'redux';
 
 import { Actions } from '../../store/invoices/actions';
 
@@ -9,11 +9,7 @@ import { Actions } from '../../store/invoices/actions';
 import { getInvoices } from '../../store/invoices/selectors';
 import { getCustomersState } from '../../store/customers/selectors'
 import { AppState } from '../../store';
-import { History } from 'history';
-
-interface MainProps {
-  history: History
-}
+import {withRouter, RouteComponentProps} from 'react-router-dom';
 
 // STORE PROPS
 const mapStateToProps = (state: AppState) => {
@@ -30,8 +26,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 type Props =
   & ReturnType<typeof mapStateToProps>
-  & MainProps
   & ReturnType<typeof mapDispatchToProps>
+  & RouteComponentProps
   ;
 
 
@@ -75,4 +71,7 @@ class MainPage extends React.PureComponent<Props,{}> {
  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps),
+)(MainPage) as any;
