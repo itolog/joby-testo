@@ -8,8 +8,8 @@ import InvoicesPage from './Invoices/InvoicesPage';
 import Header from './components/Header';
 import NoMatch from './NoMatch';
 import MainPage from './MainPage/MainPage';
-import ViewPage from '../shared/components/ViewPage';
-import CreateInvoice from './CreateInvoice/CreacteInvoice '
+import ViewPage from './Invoices/ViewInvoice';
+import CreateInvoice from './Invoices/CreateInvoice/CreacteInvoice';
 
 
 import './App.css';
@@ -56,9 +56,11 @@ class App extends PureComponent<Props, {}>{
                <Route path='/' exact  component={MainPage} />
                <Route path='/products/' component={ProductsPage} />
                <Route path='/customers/' component={CustomersPage} />
-               <Route path='/invoices/'  component={InvoicesPage} />
-               <Route path='/view/' component={ViewPage} />
-               <Route path='/createInvoice/' component={CreateInvoice} />
+
+               <Route path='/invoices'  component={InvoicesPage} />
+               <Route path='/invoice/create' component={CreateInvoice} />
+               <Route path='/invoice/:id/view/' component={ViewPage} />
+
                <Route component={NoMatch}/>
              </Switch>
            </main>

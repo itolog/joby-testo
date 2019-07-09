@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
-import { getCustomers } from '../../store/customers/selectors';
-import { getProducts } from '../../store/products/selectors';
-import { genereteNextIdInvoice } from '../../store/invoices/selectors'
-import { AppState } from '../../store';
+import { getCustomers } from '../../../store/customers/selectors';
+import { getProducts } from '../../../store/products/selectors';
+import { genereteNextIdInvoice } from '../../../store/invoices/selectors'
+import { AppState } from '../../../store';
 
 import './createInvoice.css'
 
@@ -31,7 +31,7 @@ type Props =
   & ReturnType<typeof mapStateToProps>
   ;
 
-class CreacteInvoice  extends PureComponent<Props, State> {
+class CreacteInvoice extends PureComponent<Props, State> {
 
   public state = {
     optionRefName: '',

@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './invoiceButton.css';
 
 export default function InvoiceButton() {
     return (
        <div className='wrapp-button'>
-            <Link to='/createInvoice/'  className='invoice-button'>
+            <NavLink to='/invoice/create/'  className='invoice-button'>
                 <span className='btn-plus'>+</span>
                 <span>New Invoice</span>
-            </Link>
+            </NavLink>
        </div>
     )
 }

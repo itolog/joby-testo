@@ -34,7 +34,7 @@ type Props =
 class MainPage extends React.PureComponent<Props,{}> {
   // Вынести в компонент кнопку
    toView = (id: number) => {
-    this.props.history.push(`/view/`);
+    this.props.history.push(`/invoice/${id}/view/`);
     this.props.setInvoiceId(id);
   };
 

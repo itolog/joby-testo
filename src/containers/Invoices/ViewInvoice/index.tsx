@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import discountCalculator from '../../utils/discountCalculator';
+import discountCalculator from '../../../shared/utils/discountCalculator';
 import { getInvoiceById } from '../../../store/invoices/selectors';
 import { getCustomers } from '../../../store/customers/selectors';
 import { getProductState } from '../../../store/products/selectors';

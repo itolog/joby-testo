@@ -1,18 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { History } from 'history';
-
+import {withRouter, RouteComponentProps} from 'react-router-dom';
 import './invoices.css';
 import { getInvoices } from '../../store/invoices/selectors';
 import { getCustomersState } from '../../store/customers/selectors'
 import { AppState } from '../../store';
-import { Dispatch } from 'redux';
+import { Dispatch, compose } from 'redux';
 import { Actions } from '../../store/invoices/actions';
 
-
-interface Router {
-  history: History
-}
 
 // STORE PROPS
 const mapStateToProps = (state: AppState) => {
@@ -27,7 +22,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 type Props =
   & ReturnType<typeof mapStateToProps>
-  & Router
+  & RouteComponentProps
   & ReturnType<typeof mapDispatchToProps>
   ;
 
@@ -35,7 +30,7 @@ type Props =
 class InvoicesPage extends PureComponent<Props, {}> {
 
   toView = (id: number) => {
-    this.props.history.push(`/view/`);
+    this.props.history.push(`/invoice/${id}/view/`);
     this.props.setInvoiceId(id);
   };
 
@@ -78,5 +73,7 @@ class InvoicesPage extends PureComponent<Props, {}> {
     );
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(InvoicesPage);
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps),
+)(InvoicesPage) as any;
