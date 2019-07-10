@@ -1,14 +1,30 @@
 import axios from 'axios';
+import { Observable } from 'rxjs';
+
+// export default class ProductsService {
+//   static getProducts() {
+//     return new Promise((resolve, reject) => {
+//       axios.get('http://www.mocky.io/v2/5d21cc652f00006f2cc46338')
+//         .then(({data}: any) => {
+//           resolve(data.products);
+//         })
+//         .catch(e => {
+//           reject(e.message);
+//         });
+//     })
+//   }
+// }
 
 export default class ProductsService {
   static getProducts() {
-    return new Promise((resolve, reject) => {
+    return new Observable(subscribe => {
       axios.get('http://www.mocky.io/v2/5d21cc652f00006f2cc46338')
         .then(({data}: any) => {
-          resolve(data.products);
+          subscribe.next(data.products);
+          subscribe.complete();
         })
         .catch(e => {
-          reject(e.message);
+          subscribe.error(e.message);
         });
     })
   }
