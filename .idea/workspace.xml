@@ -4,11 +4,24 @@
     <list default="true" id="1b89bfd8-2a0b-48ce-b501-516dd9a4741f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Invoices/ViewInvoice/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Invoices/ViewInvoice/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Customers/CustomersPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Customers/CustomersPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Invoices/InvoicesPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Invoices/InvoicesPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/MainPage/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MainPage/MainPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/services/customersService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/services/customersService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Products/ProductsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Products/ProductsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/components/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/components/InvoiceButton/InvoiceButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/components/InvoiceButton/InvoiceButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/services/invoicesService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/services/invoicesService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/customers/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/customers/epics.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/customers/epics.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/invoices/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/invoices/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/invoices/epics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/invoices/epics.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/invoices/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/invoices/reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/invoices/selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/invoices/selectors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/invoices/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/invoices/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/products/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/products/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/products/epics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/products/epics.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,73 +34,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/App.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/MainPage/MainPage.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="41" />
+            <state relative-caret-position="500">
+              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/store/index.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="41" column="39" lean-forward="true" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#70#0" expanded="true" />
-                <element signature="e#553#623#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/store/customers/actions.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/store/customers/epics.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-                <element signature="e#86#152#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shared/services/customersService.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -109,19 +63,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/ViewPage/viewPage.css" />
-        <option value="$PROJECT_DIR$/src/containers/ViewPage/viewPage.css" />
-        <option value="$PROJECT_DIR$/src/store/customers/mockCustomer.js" />
-        <option value="$PROJECT_DIR$/src/store/mockData.js" />
-        <option value="$PROJECT_DIR$/src/store/mockData.json" />
         <option value="$PROJECT_DIR$/src/containers/Customers/index.tsx" />
         <option value="$PROJECT_DIR$/src/containers/Customers/Customers.tsx" />
         <option value="$PROJECT_DIR$/src/containers/Products/index.tsx" />
         <option value="$PROJECT_DIR$/src/containers/Invoices/index.tsx" />
         <option value="$PROJECT_DIR$/src/components/Logo/index.tsx" />
         <option value="$PROJECT_DIR$/src/containers/ViewPage/index.tsx" />
-        <option value="$PROJECT_DIR$/src/containers/Products/ProductsPage.tsx" />
-        <option value="$PROJECT_DIR$/src/containers/Customers/CustomersPage.tsx" />
         <option value="$PROJECT_DIR$/src/UI/InvoiceButton/InvoiceButton.tsx" />
         <option value="$PROJECT_DIR$/src/containers/CreateInvoice/createInvoice.css" />
         <option value="$PROJECT_DIR$/src/containers/CreateInvoice/CreacteInvoice .tsx" />
@@ -129,37 +76,44 @@
         <option value="$PROJECT_DIR$/src/components/ViewPage/index.tsx" />
         <option value="$PROJECT_DIR$/src/shared/components/ViewPage/index.tsx" />
         <option value="$PROJECT_DIR$/src/components/Products/ProductsPage.tsx" />
-        <option value="$PROJECT_DIR$/src/store/invoices/reducers.ts" />
         <option value="$PROJECT_DIR$/src/components/Invoices/InvoicesPage.tsx" />
-        <option value="$PROJECT_DIR$/src/store/invoices/actions.ts" />
         <option value="$PROJECT_DIR$/src/shared/services/mockData.json" />
         <option value="$PROJECT_DIR$/src/shared/services/fetchCustomerService.tsx" />
         <option value="$PROJECT_DIR$/src/store/products/types.ts" />
         <option value="$PROJECT_DIR$/src/store/products/reducers.ts" />
         <option value="$PROJECT_DIR$/src/store/customers/types.ts" />
-        <option value="$PROJECT_DIR$/src/store/customers/reducers.ts" />
         <option value="$PROJECT_DIR$/src/store/products/selectors.ts" />
         <option value="$PROJECT_DIR$/src/mockData.json" />
-        <option value="$PROJECT_DIR$/src/store/invoices/selectors.ts" />
-        <option value="$PROJECT_DIR$/src/store/customers/selectors.ts" />
         <option value="$PROJECT_DIR$/src/components/CreateInvoice/CreacteInvoice .tsx" />
         <option value="$PROJECT_DIR$/src/App.tsx" />
         <option value="$PROJECT_DIR$/src/components/MainPage/MainPage.tsx" />
         <option value="$PROJECT_DIR$/src/components/App.tsx" />
-        <option value="$PROJECT_DIR$/src/containers/components/Header/index.tsx" />
         <option value="$PROJECT_DIR$/src/shared/services/fetchService.tsx" />
+        <option value="$PROJECT_DIR$/src/store/customers/actions.ts" />
+        <option value="$PROJECT_DIR$/src/store/products/epics.ts" />
+        <option value="$PROJECT_DIR$/src/shared/services/customersService.tsx" />
         <option value="$PROJECT_DIR$/src/shared/services/productsService.tsx" />
-        <option value="$PROJECT_DIR$/src/store/products/actions.ts" />
         <option value="$PROJECT_DIR$/src/containers/Invoices/CreateInvoice/CreacteInvoice.tsx" />
         <option value="$PROJECT_DIR$/src/shared/components/InvoiceButton/InvoiceButton.tsx" />
-        <option value="$PROJECT_DIR$/src/containers/Invoices/ViewInvoice/index.tsx" />
-        <option value="$PROJECT_DIR$/src/containers/Invoices/InvoicesPage.tsx" />
-        <option value="$PROJECT_DIR$/src/store/customers/actions.ts" />
-        <option value="$PROJECT_DIR$/src/containers/MainPage/MainPage.tsx" />
-        <option value="$PROJECT_DIR$/src/containers/App.tsx" />
-        <option value="$PROJECT_DIR$/src/store/index.ts" />
-        <option value="$PROJECT_DIR$/src/shared/services/customersService.tsx" />
+        <option value="$PROJECT_DIR$/src/index.tsx" />
+        <option value="$PROJECT_DIR$/src/store/products/actions.ts" />
+        <option value="$PROJECT_DIR$/src/store/invoices/types.ts" />
+        <option value="$PROJECT_DIR$/src/store/customers/reducers.ts" />
+        <option value="$PROJECT_DIR$/src/store/invoices/actions.ts" />
         <option value="$PROJECT_DIR$/src/store/customers/epics.tsx" />
+        <option value="$PROJECT_DIR$/src/store/invoices/epics.ts" />
+        <option value="$PROJECT_DIR$/src/store/index.ts" />
+        <option value="$PROJECT_DIR$/src/store/invoices/reducers.ts" />
+        <option value="$PROJECT_DIR$/src/containers/components/Header/index.tsx" />
+        <option value="$PROJECT_DIR$/src/store/invoices/selectors.ts" />
+        <option value="$PROJECT_DIR$/src/store/customers/selectors.ts" />
+        <option value="$PROJECT_DIR$/src/shared/services/invoicesService.tsx" />
+        <option value="$PROJECT_DIR$/src/containers/App.tsx" />
+        <option value="$PROJECT_DIR$/src/containers/Products/ProductsPage.tsx" />
+        <option value="$PROJECT_DIR$/src/containers/Customers/CustomersPage.tsx" />
+        <option value="$PROJECT_DIR$/src/containers/Invoices/InvoicesPage.tsx" />
+        <option value="$PROJECT_DIR$/src/containers/Invoices/ViewInvoice/index.tsx" />
+        <option value="$PROJECT_DIR$/src/containers/MainPage/MainPage.tsx" />
       </list>
     </option>
   </component>
@@ -212,20 +166,7 @@
               <item name="test-proj" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test-proj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test-proj" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test-proj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test-proj" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-              <item name="customers" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -301,12 +242,12 @@
       <workItem from="1562655229446" duration="24363000" />
       <workItem from="1562741897723" duration="639000" />
       <workItem from="1562743055288" duration="12485000" />
-      <workItem from="1562757923023" duration="2368000" />
+      <workItem from="1562757923023" duration="15058000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138452000" />
+    <option name="totallyTimeSpent" value="151142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="977" extended-state="0" />
@@ -381,65 +322,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/invoices/types.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/services/fetchCustomerService.tsx" />
-    <entry file="file://$PROJECT_DIR$/src/store/customers/types.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/invoices/actions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/invoices/selectors.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="2" lean-forward="true" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/customers/selectors.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mockData.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="14" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/invoices/reducers.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="10" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/products/types.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -453,16 +336,6 @@
           <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/products/reducers.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -484,101 +357,10 @@
     <entry file="file://$PROJECT_DIR$/src/containers/App.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/services/productsService.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/services/fetchService.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="4" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="25" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/products/actions.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/components/InvoiceButton/InvoiceButton.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Invoices/ViewInvoice/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.tsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Products/ProductsPage.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Customers/CustomersPage.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/components/Header/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="81" selection-start-line="7" selection-start-column="81" selection-end-line="7" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/customers/reducers.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="11" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Invoices/InvoicesPage.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" column="39" lean-forward="true" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -589,71 +371,272 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Invoices/CreateInvoice/CreacteInvoice.tsx">
+    <entry file="file://$PROJECT_DIR$/src/store/products/reducers.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="375">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/MainPage/MainPage.tsx">
+    <entry file="file://$PROJECT_DIR$/src/shared/services/fetchService.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="41" />
+        <state relative-caret-position="360">
+          <caret line="25" column="4" lean-forward="true" selection-start-line="17" selection-start-column="3" selection-end-line="25" selection-end-column="4" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/App.tsx">
+    <entry file="file://$PROJECT_DIR$/src/shared/services/productsService.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+        <state relative-caret-position="75">
+          <caret line="5" column="51" lean-forward="true" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Invoices/CreateInvoice/CreacteInvoice.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="84" column="28" lean-forward="true" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="28" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/index.ts">
+    <entry file="file://$PROJECT_DIR$/src/index.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="41" column="39" lean-forward="true" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+        <state relative-caret-position="195">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
           <folding>
-            <element signature="e#0#70#0" expanded="true" />
-            <element signature="e#553#623#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/components/InvoiceButton/InvoiceButton.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/products/epics.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/products/actions.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shared/services/customersService.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+        <state relative-caret-position="60">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mockData.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="28" column="14" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/customers/actions.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        <state relative-caret-position="165">
+          <caret line="12" column="93" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="12" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/customers/types.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/invoices/types.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/invoices/actions.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/store/customers/epics.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        <state relative-caret-position="150">
+          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
-            <element signature="e#86#152#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/customers/reducers.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="19" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/invoices/reducers.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/invoices/selectors.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/components/Header/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/invoices/epics.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="59" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shared/services/invoicesService.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="41" column="9" lean-forward="true" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#70#0" expanded="true" />
+            <element signature="e#426#496#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/customers/selectors.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/App.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="51" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Customers/CustomersPage.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="53" lean-forward="true" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Invoices/InvoicesPage.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Products/ProductsPage.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="20" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Invoices/ViewInvoice/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/MainPage/mainPage.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/MainPage/MainPage.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

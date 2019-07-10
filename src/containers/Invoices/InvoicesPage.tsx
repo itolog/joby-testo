@@ -1,23 +1,31 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import {withRouter, RouteComponentProps} from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import './invoices.css';
 import { getInvoices } from '../../store/invoices/selectors';
-import { getCustomersState } from '../../store/customers/selectors'
+import { getCustomersError, getCustomersState, isLoadingCustomer } from '../../store/customers/selectors';
 import { AppState } from '../../store';
 import { Dispatch, compose } from 'redux';
-import { Actions } from '../../store/invoices/actions';
 
+import { Actions } from '../../store/invoices/actions';
+import { Actions as ActionsCustomers } from '../../store/customers/actions';
+import { Actions as ActionsProducts } from '../../store/products/actions';
 
 // STORE PROPS
 const mapStateToProps = (state: AppState) => {
   return {
     invoices: getInvoices(state),
-    customer: getCustomersState(state)
+    customer: getCustomersState(state),
+    // customers
+    customersError: getCustomersError(state),
+    isLoadingCustomer: isLoadingCustomer(state)
   };
 };
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setInvoiceId: (id: number) => dispatch(Actions.setCurrentIdInvoice(id))
+  setInvoiceId: (id: number) => dispatch(Actions.setCurrentIdInvoice(id)),
+  fetchInvoices: () => dispatch(Actions.fetchInvoicesStart()),
+  fetchCustomers: () => dispatch(ActionsCustomers.fetchCustomersStart()),
+  fetchProducts: () => dispatch(ActionsProducts.fetchProductsStart())
 });
 
 type Props =
@@ -29,6 +37,12 @@ type Props =
 
 class InvoicesPage extends PureComponent<Props, {}> {
 
+  public componentDidMount(): void {
+    this.props.fetchInvoices();
+    this.props.fetchCustomers();
+    this.props.fetchProducts();
+  }
+
   toView = (id: number) => {
     this.props.history.push(`/invoice/${id}/view/`);
     this.props.setInvoiceId(id);
@@ -39,10 +53,14 @@ class InvoicesPage extends PureComponent<Props, {}> {
   };
 
   public render() {
-    const { invoices, customer } = this.props;
+    const { invoices, customer, isLoadingCustomer, customersError } = this.props;
     console.log(customer);
     return (
       <div className='invoices'>
+        {isLoadingCustomer && <h1>Loading ...</h1>}
+        {/*  ERROR  CONTENT */}
+        {customersError && <h2>{customersError}</h2>}
+
         <table className='table'>
           <tbody>
           <tr className='table-title'>
@@ -52,7 +70,7 @@ class InvoicesPage extends PureComponent<Props, {}> {
             <th>Total</th>
             <th>Actions</th>
           </tr>
-          {invoices.map((item) => {
+          {!isLoadingCustomer && invoices.map((item) => {
             return (
               <tr key={item.id.toString()}>
                 <td>{item.id}</td>
@@ -73,7 +91,8 @@ class InvoicesPage extends PureComponent<Props, {}> {
     );
   }
 }
+
 export default compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps, mapDispatchToProps)
 )(InvoicesPage) as any;

@@ -10,7 +10,7 @@ export const getInvoices = createSelector(
   (state: InvoiseState) => Object.values(state.invoices)
 );
 
-export const getActiveInvoices = createSelector(
+export const getActiveInvoicesCount = createSelector(
   [getInvoiceState],
   (state: InvoiseState) => Object.keys(state.invoices).length
 );

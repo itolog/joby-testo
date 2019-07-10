@@ -17,5 +17,8 @@ export interface InvoiseState {
   currentIdInvoice: number,
   invoices: {
     [id: number]: Invoices
-  }
+  },
+  ids: number[],
+  isLoading: boolean,
+  error: string | null
 }

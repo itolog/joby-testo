@@ -7,16 +7,17 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { reducer as productsReducer } from "./products/reducers";
 import { reducer as customersReducer } from "./customers/reducers";
 import { reducer as invoicesReducer } from "./invoices/reducers";
-
-import { Actions, fetchCustomers } from './customers/actions';
-import { fetchProducts } from './products/actions';
 // EPICS
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import {  fetchCustomersEpic } from './customers/epics';
+import { fetchProductsEpic } from './products/epics';
+import { fetchInvoicesEpic } from './invoices/epics';
 
 
 const rootEpic = combineEpics(
-  fetchCustomersEpic
+  fetchCustomersEpic,
+  fetchProductsEpic,
+  fetchInvoicesEpic
 );
 
 const epicMiddleware = createEpicMiddleware();
@@ -37,9 +38,6 @@ function configureStore(preloadedState: any) {
   const composedEnhancers: any = composeWithDevTools(...enhancers);
 
   const store = createStore(reducer, preloadedState, composedEnhancers);
-
-  // store.dispatch<any>(fetchCustomers());
-  store.dispatch<any>(fetchProducts());
 
   epicMiddleware.run(rootEpic);
 

@@ -7,7 +7,7 @@ import './header.css';
 
 import InvoiceButton from '../../../shared/components/InvoiceButton/InvoiceButton';
 import Logo from './Logo';
-import { getActiveInvoices } from '../../../store/invoices/selectors';
+import { getActiveInvoicesCount } from '../../../store/invoices/selectors';
 import { AppState } from '../../../store';
 
 interface Invoices {
@@ -17,7 +17,7 @@ interface Invoices {
 // STORE PROPS
 const mapStateToProps = (state: AppState) => {
   return {
-    activeInvoicesCount: getActiveInvoices(state)
+    activeInvoicesCount: getActiveInvoicesCount(state)
   };
 };
 

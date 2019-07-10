@@ -5,6 +5,8 @@ import './customer.css';
 
 import { AppState } from '../../store';
 import { getCustomers } from '../../store/customers/selectors';
+import { Dispatch } from 'redux';
+import { Actions } from '../../store/customers/actions';
 
 
 // STORE PROPS
@@ -14,11 +16,21 @@ const mapStateToProps = (state: AppState) => {
   };
 };
 
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  fetchCustomers: () => dispatch(Actions.fetchCustomersStart())
+});
+
 type Props =
   & ReturnType<typeof mapStateToProps>
+  & ReturnType<typeof mapDispatchToProps>
   ;
 
 class CustomersPage extends PureComponent<Props, {}> {
+
+  public componentDidMount(): void {
+    this.props.fetchCustomers();
+  }
+
   public render() {
     const { customers } = this.props;
     return (
@@ -44,4 +56,4 @@ class CustomersPage extends PureComponent<Props, {}> {
   }
 }
 
-export default connect(mapStateToProps)(CustomersPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomersPage);
