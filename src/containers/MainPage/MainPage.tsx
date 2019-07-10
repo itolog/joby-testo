@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { compose, Dispatch } from 'redux';
 
 import { Actions } from '../../store/invoices/actions';
+import { Actions as ActionsCustomers } from '../../store/customers/actions';
 
 
 import { getInvoices } from '../../store/invoices/selectors';
 import { getCustomersState } from '../../store/customers/selectors'
 import { AppState } from '../../store';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
+
 
 // STORE PROPS
 const mapStateToProps = (state: AppState) => {
@@ -21,6 +23,7 @@ const mapStateToProps = (state: AppState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   setInvoiceId: (id: number) => dispatch(Actions.setCurrentIdInvoice(id)),
+  fetchCustomers: () => dispatch(ActionsCustomers.fetchCustomersStart())
 });
 
 
@@ -32,6 +35,12 @@ type Props =
 
 
 class MainPage extends React.PureComponent<Props,{}> {
+
+  componentDidMount(): void {
+    console.log(3)
+    this.props.fetchCustomers()
+  }
+
   // Вынести в компонент кнопку
    toView = (id: number) => {
     this.props.history.push(`/invoice/${id}/view/`);

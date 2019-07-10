@@ -19,6 +19,9 @@ import { AppState } from '../store';
 // Selectors import
 import { getCustomersError, isLoadingCustomer } from '../store/customers/selectors';
 import { getErrorProducts, isLoadingProdacts } from '../store/products/selectors'
+import { Dispatch } from 'redux';
+import { Actions } from '../store/invoices/actions';
+import { Actions as ActionsCustomers } from '../store/customers/actions';
 
 
 const mapStateToProps = (state: AppState) => {
@@ -33,12 +36,24 @@ const mapStateToProps = (state: AppState) => {
 };
 
 
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  setInvoiceId: (id: number) => dispatch(Actions.setCurrentIdInvoice(id)),
+  fetchCustomers: () => dispatch(ActionsCustomers.fetchCustomersStart())
+});
+
 type Props =
   & ReturnType<typeof mapStateToProps>
+  & ReturnType<typeof mapDispatchToProps>
   ;
 
+
+
 class App extends PureComponent<Props, {}>{
- public render() {
+  componentDidMount(): void {
+    this.props.fetchCustomers()
+  }
+
+  public render() {
    const {isLoadingProdacts, isLoadingCustomer, customersError, productsError} = this.props;
    return (
      <Router>
@@ -72,4 +87,4 @@ class App extends PureComponent<Props, {}>{
  }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

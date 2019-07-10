@@ -1,28 +1,26 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
-import thunkMiddleware from "redux-thunk";
+import thunk from "redux-thunk";
 
-// import { combineEpics } from 'redux-observable';
-import { createEpicMiddleware } from 'redux-observable';
-
-import { StateType } from "typesafe-actions";
+import {  StateType } from 'typesafe-actions';
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { reducer as productsReducer } from "./products/reducers";
 import { reducer as customersReducer } from "./customers/reducers";
 import { reducer as invoicesReducer } from "./invoices/reducers";
 
-import { fetchCustomers } from './customers/actions';
+import { Actions, fetchCustomers } from './customers/actions';
 import { fetchProducts } from './products/actions';
+// EPICS
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import {  fetchCustomersEpic } from './customers/epics';
 
 
-// import {  fetchCustomersEpic } from './customers/epics';
-
-// const rootEpic = combineEpics(
-//   fetchCustomersEpic
-// );
+const rootEpic = combineEpics(
+  fetchCustomersEpic
+);
 
 const epicMiddleware = createEpicMiddleware();
-
+//
 const reducer = combineReducers({
   products: productsReducer,
   customers: customersReducer,
@@ -32,7 +30,7 @@ const reducer = combineReducers({
 export type AppState = StateType<typeof reducer>;
 
 function configureStore(preloadedState: any) {
-  const middlewares = [thunkMiddleware, epicMiddleware];
+  const middlewares = [thunk, epicMiddleware];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
   const enhancers = [middlewareEnhancer];
@@ -40,9 +38,11 @@ function configureStore(preloadedState: any) {
 
   const store = createStore(reducer, preloadedState, composedEnhancers);
 
-  store.dispatch<any>(fetchCustomers());
+  // store.dispatch<any>(fetchCustomers());
   store.dispatch<any>(fetchProducts());
-  // epicMiddleware.run(rootEpic);
+
+  epicMiddleware.run(rootEpic);
+
   return store;
 }
 
