@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
+import { reducer as formReducer } from 'redux-form';
 
 import {  StateType } from 'typesafe-actions';
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -25,7 +26,8 @@ const epicMiddleware = createEpicMiddleware();
 const reducer = combineReducers({
   products: productsReducer,
   customers: customersReducer,
-  invoices: invoicesReducer
+  invoices: invoicesReducer,
+  form: formReducer
 });
 
 export type AppState = StateType<typeof reducer>;

@@ -29,6 +29,15 @@ export function reducer(
         invoices
       }
     }
+    case ActionTypes.ADD_INVOICE: {
+      return {
+        ...state,
+        invoices: {
+          ...state.invoices,
+          [action.payload.id]: action.payload
+        }
+      }
+    }
     case ActionTypes.SET_CURRENT_ID_INVOICE: {
       return {
         ...state,

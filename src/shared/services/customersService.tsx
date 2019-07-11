@@ -1,14 +1,16 @@
 import axios from 'axios';
+import { Observable } from 'rxjs';
 
 export default class CustomersService {
-   static getCustomers() {
-    return new Promise((resolve, reject) => {
+  static getCustomers() {
+    return new Observable(subscribe => {
       axios.get('http://www.mocky.io/v2/5d21cc652f00006f2cc46338')
         .then(({data}: any) => {
-          resolve(data.customers);
+          subscribe.next(data.customers);
+          subscribe.complete();
         })
         .catch(e => {
-          reject(e.message);
+          subscribe.error(e.message);
         });
     })
   }

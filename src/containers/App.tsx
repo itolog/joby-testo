@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {  Route, Switch  } from 'react-router-dom';
 
 import ProductsPage from './Products/ProductsPage';
@@ -13,8 +13,7 @@ import CreateInvoice from './Invoices/CreateInvoice/CreacteInvoice';
 
 import './App.css';
 
-class App extends PureComponent<{}, {}>{
-  public render() {
+function App () {
    return (
        <div className='App'>
          <div className='container'>
@@ -35,7 +34,6 @@ class App extends PureComponent<{}, {}>{
          </div>
        </div>
    );
- }
 }
 
 export default App;
