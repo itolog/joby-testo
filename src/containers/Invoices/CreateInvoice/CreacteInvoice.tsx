@@ -18,6 +18,8 @@ import { Invoices } from '../../../store/invoices/types';
 
 import myValidator from './validate';
 
+import CreateForm from './CreateForm/CreateForm';
+
 interface FormData extends RouteComponentProps {
   customers: Customers[];
   products: Products[];
@@ -81,44 +83,57 @@ class CreacteInvoice extends PureComponent<Props, State> {
   }
 
   public componentDidUpdate(prevProps: any, prevState: any) {
-    if (prevState.optionRefProduct !== this.state.optionRefProduct || prevState.optionRefQty !== this.state.optionRefQty) {
-      this.setState({
-        price: this.props.products[Number(this.state.optionRefProduct) - 1].price * this.state.optionRefQty
-      });
+    const { values } = this.props.formValue.addInvoice;
+    console.log(values)
+    if (prevProps.formValue.addInvoice !== this.props.formValue.addInvoice) {
+
+      if(values !== undefined && this.props.products !== undefined && values.product !== undefined && values.qty !== undefined) {
+        console.log(values)
+        console.log('prod', values.product)
+        this.setState({
+          price: this.props.products[Number(values.product) - 1].price * Number(values.qty),
+        });
+
+        if (values.discount !== undefined) {
+          this.setState({
+            discount: values.discount
+          })
+        }
+      }
     }
   }
 
-  public handleOptionSelectName = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    this.setState({
-      optionRefName: e.target.value
-    });
-
-  };
-
-  public handleOptionSelectProduct = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    this.setState({
-      optionRefProduct: e.target.value
-    });
-  };
-
-  public handleOptionSelectQty = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
-    const qty = Number(e.target.value);
-    this.setState({
-      optionRefQty: qty
-    });
-  };
-
-  public handleOptionSelectDiscaunt = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
-    const discaunt = Number(e.target.value);
-    this.setState({
-      optionRefDiscaunt: discaunt
-    });
-  };
+  // public handleOptionSelectName = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   this.setState({
+  //     optionRefName: e.target.value
+  //   });
+  //
+  // };
+  //
+  // public handleOptionSelectProduct = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   this.setState({
+  //     optionRefProduct: e.target.value
+  //   });
+  // };
+  //
+  // public handleOptionSelectQty = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+  //   const qty = Number(e.target.value);
+  //   this.setState({
+  //     optionRefQty: qty
+  //   });
+  // };
+  //
+  // public handleOptionSelectDiscaunt = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+  //   const discaunt = Number(e.target.value);
+  //   this.setState({
+  //     optionRefDiscaunt: discaunt
+  //   });
+  // };
 
   public submitForm = (e: React.SyntheticEvent) => {
     e.preventDefault();
     const { values } = this.props.formValue.addInvoice;
-    console.log(this.props);
+    console.log(this.props.formValue.addInvoice);
     if ('syncErrors' in this.props.formValue.addInvoice) {
       const syncErrors: {} = this.props.formValue.addInvoice['syncErrors'];
       this.setState({
@@ -162,121 +177,21 @@ class CreacteInvoice extends PureComponent<Props, State> {
 
 
   render() {
-    const { customers, products, submitting } = this.props;
-    const rangeQty = [1, 2, 3];
-    const rangeDiscaunt = [1, 2, 3];
+    const { customers, products } = this.props;
 
     return (
       <div className='create-container'>
         <h4 className='viev-title-id'>Invoice #{this.state.nextId}</h4>
-        <form className='create-form' onSubmit={this.submitForm}>
-          {this.state.errorValidate && <h4>{this.state.errorValidate}</h4>}
-          <div className='form-content'>
-            {/* FORM LEFT PART */}
-            <div className='form-left'>
-              {/* Field Select Customer */}
-              <Field
-                className='name-select'
-                name="customer"
-                component="select"
-                onChange={this.handleOptionSelectName}
-              >
-                <option></option>
-                {customers.map((item: any) => {
-                  return (
-                    <option
-                      key={item.id}
-                      value={item.id}>{item.name}</option>
-                  );
-                })}
-              </Field>
-              {/* SELECT PRODUCT SECTION  */}
-              <div className='view-products'>
-                <table className='view-table create-table'>
-                  <tbody>
-                  <tr>
-                    <th className='view-table--title'>Products</th>
-                    <th className='view-table--title'>Qty</th>
-                    <th className='view-table--title'>Price</th>
-                  </tr>
-                  {/* ======  Product  ======= */}
-                  <tr>
-                    <td className='select-style'>
-                      <Field
-                        className='name-select'
-                        name='product'
-                        onChange={this.handleOptionSelectProduct}
-                        component="select"
-                      >
-                        <option></option>
-                        {products.map((item: any) => {
-                          return (
-                            <option
-                              key={item.id}
-                              // selected={'motorola maxx' ? true: false}
-                              value={item.id}>{item.name}</option>
-                          );
-                        })}
-                      </ Field>
-                    </td>
-                    {/* ==========  quantity ==========*/}
-                    <td className='item-focus'>
-                      <div className="select-editable">
-                        <Field
-                          component="select"
-                          name='qty'
-                          className="select-editable"
-                          onChange={this.handleOptionSelectQty}
-                        >
-                          <option></option>
-                          {rangeQty.map((val: any) => {
-                            return (
-                              <option key={val} value={val}>{val}</option>
-                            );
-                          })}
-                        </Field>
-                      </div>
-
-                    </td>
-                    {/* ============= Price =============  */}
-                    <td className='item-focus'>{
-                      this.state.price
-                    }</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* FORM RIGHT PART */}
-            <div className='form-right'>
-              <div className='viev-discount-title'>Discount %</div>
-              <div className='view-discount-number select-editable'>
-                <Field
-                  className="select-editable"
-                  name='discount'
-                  component="select"
-                  onChange={this.handleOptionSelectDiscaunt}
-                >
-                  <option></option>
-                  {rangeDiscaunt.map((val: any) => {
-                    return (
-                      <option key={val} value={val}>{val}</option>
-                    );
-                  })}
-                </Field>
-              </div>
-            </div>
-          </div>
-          {/* ===========  SUBMIT BUTTON =========   */}
-          <button type="submit" disabled={submitting} className='submit-button'>Save invoice</button>
-        </form>
+        <CreateForm
+          customers={customers}
+          products={products}
+        />
         {/* =================  Total ===========   */}
         <div className='product-total'>
           <div className='total-title'>total</div>
           <div className='total-count'>
             {
-              discountCalculator(this.state.price, this.state.optionRefDiscaunt)
+              discountCalculator(this.state.price, this.state.discount)
             }
           </div>
         </div>
@@ -285,7 +200,4 @@ class CreacteInvoice extends PureComponent<Props, State> {
   }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  reduxForm<{}, FormData>({ form: 'addInvoice', validate: myValidator }
-  )(CreacteInvoice));
+export default connect(mapStateToProps, mapDispatchToProps)(CreacteInvoice);
