@@ -27,3 +27,8 @@ export const genereteNextIdInvoice = createSelector(
     return Math.max.apply(null, invoiceIdsArray);
   }
 );
+
+export const getCurrenInvoiceId = createSelector(
+  getInvoiceState,
+  (state: InvoiseState) => state.currentIdInvoice
+);

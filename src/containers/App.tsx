@@ -9,6 +9,7 @@ import NoMatch from './NoMatch';
 import MainPage from './MainPage/MainPage';
 import ViewPage from './Invoices/ViewInvoice';
 import CreateInvoice from './Invoices/CreateInvoice/CreacteInvoice';
+import EditInvoice from './Invoices/EditInvoice/EditInvoice';
 
 
 import './App.css';
@@ -27,6 +28,7 @@ function App () {
                <Route path='/invoices' exact component={InvoicesPage} />
                <Route path='/invoices/create/' component={CreateInvoice} />
                <Route path='/invoice/:id/view/' component={ViewPage} />
+               <Route path='/invoice/:id/edit/' component={CreateInvoice} />
 
                <Route component={NoMatch}/>
              </Switch>

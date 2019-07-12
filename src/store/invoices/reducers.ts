@@ -1,5 +1,7 @@
 import {  InvoiseState } from './types';
 import { ActionTypes, ActionTypeUnion } from './actions';
+import { omit } from 'lodash';
+
 
 const initialState: InvoiseState = {
   currentIdInvoice: 1,
@@ -8,6 +10,15 @@ const initialState: InvoiseState = {
   error: null,
   invoices: {}
 };
+
+// const removeProperty = (obj: Invoices, property: number) => {
+//   return  Object.keys(obj).reduce((acc, key) => {
+//     if (key !== property) {
+//       return {...acc, [key]: obj[key]}
+//     }
+//     return acc;
+//   }, {})
+// };
 
 export function reducer(
   state = initialState,
@@ -36,6 +47,15 @@ export function reducer(
           ...state.invoices,
           [action.payload.id]: action.payload
         }
+      }
+    }
+    case ActionTypes.REMOVE_INVOICE: {
+      const invoices = omit(state.invoices, action.payload);
+      const ids = Object.keys(invoices).map(Number);
+      return {
+        ...state,
+        ids,
+        invoices
       }
     }
     case ActionTypes.SET_CURRENT_ID_INVOICE: {

@@ -1,0 +1,12 @@
+.edit-container {
+    width: 100%;
+}
+
+.edit-content {
+    display: flex;
+}
+
+.edit-form {
+    flex: 2;
+    margin-right: 40px;
+}

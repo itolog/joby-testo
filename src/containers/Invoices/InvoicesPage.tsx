@@ -25,7 +25,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   setInvoiceId: (id: number) => dispatch(Actions.setCurrentIdInvoice(id)),
   fetchInvoices: () => dispatch(Actions.fetchInvoicesStart()),
   fetchCustomers: () => dispatch(ActionsCustomers.fetchCustomersStart()),
-  fetchProducts: () => dispatch(ActionsProducts.fetchProductsStart())
+  fetchProducts: () => dispatch(ActionsProducts.fetchProductsStart()),
+  removeInvoice: (id: number) => dispatch(Actions.removeInvoice(id))
 });
 
 type Props =
@@ -44,17 +45,21 @@ class InvoicesPage extends PureComponent<Props, {}> {
   }
 
   toView = (id: number) => {
-    this.props.history.push(`/invoice/${id}/view/`);
     this.props.setInvoiceId(id);
+    this.props.history.push(`/invoice/${id}/view/`);
   };
 
-  toEdit = () => {
-    this.props.history.push(`/edit`);
+  toEdit = (id: number) => {
+    this.props.setInvoiceId(id);
+    this.props.history.push(`/invoice/${id}/edit`);
+  };
+
+  removeInvoice = (id: number) => {
+    this.props.removeInvoice(id);
   };
 
   public render() {
     const { invoices, customer, isLoadingCustomer, customersError } = this.props;
-    console.log(customer);
     return (
       <div className='invoices'>
         {isLoadingCustomer && <h1>Loading ...</h1>}
@@ -79,8 +84,11 @@ class InvoicesPage extends PureComponent<Props, {}> {
                 <td>{item.total}</td>
                 <td>
                   <button className='invoices-btn invoices-btn--view' onClick={() => this.toView(item.id)}>View</button>
-                  <button className='invoices-btn invoices-btn--edit' onClick={this.toEdit}>Edit</button>
-                  <button className='invoices-btn invoices-btn--delete'>Delete</button>
+                  <button className='invoices-btn invoices-btn--edit' onClick={() => this.toEdit(item.id)}>Edit</button>
+                  <button
+                    onClick={() => this.removeInvoice(item.id)}
+                    className='invoices-btn invoices-btn--delete'
+                  >Delete</button>
                 </td>
               </tr>
             );
