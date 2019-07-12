@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import myValidator from './validate';
-import { InjectedFormProps, Field, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { Products } from '../../../../store/products/types';
@@ -41,11 +41,14 @@ type Props =
 
 
 function CreateForm(props: Props) {
+
   const [optionName, setOptionName] = useState('');
   const [optionProduct, setOptionProduct] = useState('');
   const [optionQty, setOptionQty] = useState('');
   const [optionDiscaunt, setOptionDiscaunt] = useState('');
   const [price, setPrice] = useState(1);
+
+  const [targetValueTask, setTargetValueTask] = useState({})
 
   // ERRORS
   const [errors, setErrors] = useState('');
@@ -57,17 +60,27 @@ function CreateForm(props: Props) {
   const handleOptionSelectProduct = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOptionProduct(e.target.value);
   };
-  const handleOptionSelectQty = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+  const handleOptionSelectQty = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOptionQty(e.target.value);
   };
 
-  const handleOptionSelectDiscaunt = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+  const handleOptionSelectDiscaunt = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOptionDiscaunt(e.target.value);
   };
 
   const setPriseDynimic = () => {
     setPrice(props.products[Number(optionProduct) - 1].price * Number(optionQty));
   };
+
+  // const handleOptionTaskQty = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   let targetValue = {
+  //     [e.target.name]: e.target.value
+  //   }
+  //   setTargetValueTask((prevState) => {
+  //       return {...prevState, [e.target.name]: e.target.value}
+  //   });
+  //
+  // };
 
 
   const submitForm = (e: React.SyntheticEvent) => {
@@ -108,6 +121,9 @@ function CreateForm(props: Props) {
       if (props.products && optionQty !== '') {
         setPriseDynimic();
       }
+      if (props.formValue.addInvoice) {
+        console.log(props.formValue.addInvoice.values);
+      }
 
     }
     // [props.products]
@@ -130,6 +146,7 @@ function CreateForm(props: Props) {
               component="select"
               onChange={handleOptionSelectName}
             >
+              <option>choice customer</option>
               {props.customers.map((item: any) => {
                 return (
                   <option
@@ -157,7 +174,7 @@ function CreateForm(props: Props) {
                       <td>
                         <Field
                           className='name-select'
-                          name={`item-${item.id}`}
+                          name={`product-${item.id}`}
                           // onChange={handleOptionSelectProduct}
                           component="select"
                         >
@@ -173,14 +190,15 @@ function CreateForm(props: Props) {
 
                         </Field>
                       </td>
-                      <td>
+                      <td >
+                        {/*  task qty */}
                         <Field
                           component="input"
                           type='number'
                           name={`qty-${item.id}`}
                           min='1'
                           className="select-editable"
-                          // onChange={handleOptionSelectQty}
+                          // onChange={handleOptionTaskQty}
                         >
                         </Field>
                       </td>
