@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import myValidator from './validate';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, FormSection } from 'redux-form';
 import { connect } from 'react-redux';
+import { uniqueId } from 'lodash';
 
 import { Products } from '../../../../store/products/types';
 import { Customers } from '../../../../store/customers/types';
@@ -11,6 +12,7 @@ import { Actions } from '../../../../store/invoices/actions';
 import discountCalculator from '../../../../shared/utils/discountCalculator';
 import { AppState } from '../../../../store';
 import { getProductState } from '../../../../store/products/selectors';
+import { customSelect, customInputNumber } from './customFields';
 
 interface PropsOwn {
   products: Products[],
@@ -25,11 +27,18 @@ const mapStateToProps = (state: AppState) => {
   return {
     formValue: state.form,
     productState: getProductState(state),
+    initialValues: {
+      // customer: 2,
+      // product: 1,
+      // discount: 1,
+      // qty: 1
+    }
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  addInvoice: (payload: Invoices) => dispatch(Actions.addInvoice(payload))
+  addInvoice: (payload: Invoices) => dispatch(Actions.addInvoice(payload)),
+  updateInvoice: (id: number, payload: Invoices) => dispatch(Actions.updateInvoice(id, payload))
 });
 
 
@@ -41,90 +50,114 @@ type Props =
 
 
 function CreateForm(props: Props) {
+  const refItems = useRef<any>(null);
+  const { formValue } = props;
 
-  const [optionName, setOptionName] = useState('');
-  const [optionProduct, setOptionProduct] = useState('');
-  const [optionQty, setOptionQty] = useState('');
-  const [optionDiscaunt, setOptionDiscaunt] = useState('');
   const [price, setPrice] = useState(1);
-
-  const [targetValueTask, setTargetValueTask] = useState({})
-
   // ERRORS
   const [errors, setErrors] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const handleOptionSelectName = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOptionName(e.target.value);
-  };
-  const handleOptionSelectProduct = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOptionProduct(e.target.value);
-  };
-  const handleOptionSelectQty = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOptionQty(e.target.value);
-  };
-
-  const handleOptionSelectDiscaunt = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOptionDiscaunt(e.target.value);
-  };
-
   const setPriseDynimic = () => {
-    setPrice(props.products[Number(optionProduct) - 1].price * Number(optionQty));
+    if (props.products 
+      && formValue.addInvoice 
+      && formValue.addInvoice.values 
+      && formValue.addInvoice.values.qty) {
+  setPrice(props.products[Number(formValue.addInvoice.values.product) - 1].price * Number(formValue.addInvoice.values.qty));
+    }
+  
   };
 
-  // const handleOptionTaskQty = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  //   let targetValue = {
-  //     [e.target.name]: e.target.value
-  //   }
-  //   setTargetValueTask((prevState) => {
-  //       return {...prevState, [e.target.name]: e.target.value}
-  //   });
-  //
-  // };
+  const createInvoice = () => {
+    if (formValue.addInvoice.values) {
+      const { values } = formValue.addInvoice;
 
-
+      console.log(formValue.addInvoice);
+      // Validation
+      if ('syncErrors' in formValue.addInvoice) {
+        const syncErrors: {} = formValue.addInvoice['syncErrors'];
+        setErrors(`Fields : ${Object.keys(syncErrors)} is required`);
+        setIsError(true);
+      } else {
+        // props.history.push('/invoices/');
+        setErrors('');
+        setIsError(false);
+      }
+      
+  
+      const invoice = {
+        id: props.nextId,
+        customer_id: Number(values.customer),
+        discount: Number(values.discount),
+        total: discountCalculator(price, Number(values.discount)),
+        items: [{
+          id: Number(uniqueId()),
+          invoice_id: props.nextId,
+          product_id: Number(values.product),
+          quantity: Number(values.qty)
+        }]
+      };
+      if (!isError) {
+        props.addInvoice(invoice);
+      }
+    }
+  }
+  
+  const editInvoice = () => {
+    if (formValue.addInvoice.values) {
+      const {values} = formValue.addInvoice;
+    const editedResults = []
+     for(let item in values.qtyGroup) {
+       const itemsValuesFromEdit = {
+         id: Number(item),
+         invoice_id: Number(props.invoice.id),
+         quantity: Number(values.qtyGroup[item]),
+         product_id: Number(values.itemsGroup[item])
+       }
+       editedResults.push(itemsValuesFromEdit)
+     }
+     if(values.product && values.qty) {
+      editedResults.push({
+        id: Number(uniqueId()),
+        invoice_id: Number(props.invoice.id),
+        quantity:  Number(values.qty),
+        product_id: Number(values.product)
+      })
+     }
+     props.updateInvoice(props.invoice.id, {
+       id: Number(props.invoice.id),
+       customer_id: values.customer,
+       discount: Number(props.invoice.discount),
+       total: 1000,
+       items: editedResults
+     })
+     console.log(editedResults);
+    }
+  }
   const submitForm = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    console.log(props.formValue.addInvoice);
-    // Validation
-    if ('syncErrors' in props.formValue.addInvoice) {
-      const syncErrors: {} = props.formValue.addInvoice['syncErrors'];
-      setErrors(`Fields : ${Object.keys(syncErrors)} is required`);
-      setIsError(true);
-    } else {
-      // props.history.push('/invoices/');
-      setErrors('');
-      setIsError(false);
+    if(!props.endsUrl) {
+      createInvoice();
     }
-
-
-    const invoice = {
-      id: props.nextId,
-      customer_id: Number(optionName),
-      discount: Number(optionDiscaunt),
-      total: discountCalculator(price, Number(optionDiscaunt)),
-      items: [{
-        id: Math.random() + Math.random(),
-        invoice_id: props.nextId,
-        product_id: Number(optionProduct),
-        quantity: Number(optionQty)
-      }]
-    };
-    if (!isError) {
-      props.addInvoice(invoice);
+    if(props.endsUrl) {
+      editInvoice();
     }
-
   };
 
-
   useEffect(() => {
-      if (props.products && optionQty !== '') {
+      if (props.products 
+        && formValue.addInvoice
+        && formValue.addInvoice.values 
+        && formValue.addInvoice.values.qty !== '') {
         setPriseDynimic();
       }
-      if (props.formValue.addInvoice) {
-        console.log(props.formValue.addInvoice.values);
+      if(refItems.current) {
+        console.log(refItems.current);
       }
-
+      
+      if (formValue.addInvoice) {
+        console.log(formValue.addInvoice.values);
+      }
     }
     // [props.products]
   );
@@ -143,19 +176,9 @@ function CreateForm(props: Props) {
             <Field
               className='name-select'
               name="customer"
-              component="select"
-              onChange={handleOptionSelectName}
-            >
-              <option>choice customer</option>
-              {props.customers.map((item: any) => {
-                return (
-                  <option
-                    key={item.id}
-                    value={item.id}>{item.name}</option>
-                );
-              })}
-            </Field>
-
+              iterableObj={props.customers}
+              component={customSelect}
+            />
 
             {/* SELECT PRODUCT SECTION  */}
             <div className='view-products'>
@@ -172,13 +195,13 @@ function CreateForm(props: Props) {
                   return (
                     <tr key={item.id}>
                       <td>
+                        <FormSection name='itemsGroup'>
                         <Field
                           className='name-select'
-                          name={`product-${item.id}`}
-                          // onChange={handleOptionSelectProduct}
+                          name={`${item.id}`}
+                        
                           component="select"
                         >
-
                           {props.products.map((items: any) => {
                               return (
                                 <option
@@ -189,21 +212,32 @@ function CreateForm(props: Props) {
                           )}
 
                         </Field>
+                        </FormSection>
+                       
                       </td>
                       <td >
                         {/*  task qty */}
-                        <Field
-                          component="input"
-                          type='number'
-                          name={`qty-${item.id}`}
-                          min='1'
-                          className="select-editable"
-                          // onChange={handleOptionTaskQty}
-                        >
-                        </Field>
+                        <FormSection name='qtyGroup'>
+                          <Field
+                            component="input"
+                            type='number'
+                            name={`${item.id}`}
+                            min='1'
+                            className="select-editable"
+                          >
+                          </Field>  
+                        </FormSection>
+                       
                       </td>
                       <td>
-                        {props.productState.products[item.product_id].price}
+                        {formValue 
+                        && formValue.addInvoice 
+                        && formValue.addInvoice.values 
+                        && formValue.addInvoice.values.qtyGroup
+                        &&
+                          props.productState.products[item.product_id].price 
+                          * formValue.addInvoice.values.qtyGroup[item.id] || 1
+                        }
                       </td>
                     </tr>
                   );
@@ -214,31 +248,21 @@ function CreateForm(props: Props) {
                     <Field
                       className='name-select'
                       name='product'
-                      onChange={handleOptionSelectProduct}
-                      component="select"
-                    >
-                      <option>add product</option>
-                      {props.products.map((item: any) => {
-                        return (
-                          <option
-                            key={item.id}
-                            value={item.id}>{item.name}</option>
-                        );
-                      })}
-                    </ Field>
+                      iterableObj={props.products}
+                      component={customSelect}
+                    />
                   </td>
                   {/* ==========  quantity ==========*/}
                   <td className='item-focus'>
                     <div>
                       <Field
-                        component="input"
+                        component={customInputNumber}
                         type='number'
                         name='qty'
                         min='1'
+                        max='10'
                         className="select-editable"
-                        onChange={handleOptionSelectQty}
-                      >
-                      </Field>
+                      />
                     </div>
 
                   </td>
@@ -260,11 +284,10 @@ function CreateForm(props: Props) {
              {!props.endsUrl && <Field
                 className="select-editable"
                 name='discount'
-                component="input"
+               component={customInputNumber}
                 type='number'
                 min='1'
                 max='50'
-                onChange={handleOptionSelectDiscaunt}
               >
               </Field>}
               {/*  mathc edit page */}
@@ -273,11 +296,20 @@ function CreateForm(props: Props) {
           </div>
         </div>
         {/* ===========  SUBMIT BUTTON =========   */}
-        <button
-          type="submit"
-          // disabled={submitting}
-          className='submit-button'>Save invoice
-        </button>
+        {!props.endsUrl && 
+          <button
+            type="submit"
+            // disabled={submitting}
+            className='submit-button'>Save invoice
+          </button>
+        }
+         {props.endsUrl && 
+          <button
+            type="submit"
+            // disabled={submitting}
+            className='submit-button'>Edite invoice
+          </button>
+        }
       </form>
     </>
   );
@@ -285,5 +317,8 @@ function CreateForm(props: Props) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  reduxForm<{}, Props>({ form: 'addInvoice', validate: myValidator }
-  )(CreateForm));
+  reduxForm<{}, Props>({
+     form: 'addInvoice', 
+     validate: myValidator, 
+     enableReinitialize: true 
+    })(CreateForm));

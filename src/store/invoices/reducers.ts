@@ -11,15 +11,6 @@ const initialState: InvoiseState = {
   invoices: {}
 };
 
-// const removeProperty = (obj: Invoices, property: number) => {
-//   return  Object.keys(obj).reduce((acc, key) => {
-//     if (key !== property) {
-//       return {...acc, [key]: obj[key]}
-//     }
-//     return acc;
-//   }, {})
-// };
-
 export function reducer(
   state = initialState,
   action: ActionTypeUnion
@@ -46,6 +37,15 @@ export function reducer(
         invoices: {
           ...state.invoices,
           [action.payload.id]: action.payload
+        }
+      }
+    }
+    case ActionTypes.UPDATE_INVOICE: {
+      return {
+        ...state,
+        invoices: {
+          ...state.invoices,
+          [action.payload.id]: action.payload.invoices
         }
       }
     }

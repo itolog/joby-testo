@@ -1,86 +1,74 @@
 .create-container {
-    display: flex;
-    flex-flow: column;
-    width: 100%;
-
+  display: flex;
+  flex-flow: column;
+  width: 100%;
 }
 
 .create-form {
-    display: flex;
-    flex-flow: column;
+  display: flex;
+  flex-flow: column;
 }
 .form-content {
-    display: flex;
+  display: flex;
 }
 
 .form-left {
-    flex: 2;
-    padding: 10px 10px 40px 10px;
+  flex: 2;
+  padding: 10px 10px 40px 10px;
 }
 
 .submit-button {
-    width: 100px;
-    height: 50px;
-    margin: 10px auto;
-    cursor: pointer;
+  width: 100px;
+  height: 50px;
+  margin: 10px auto;
+  cursor: pointer;
 }
 
 .form-right {
-    fisplay: flex;
-    flex: 1 1;
-    flex-flow: column;
-    width: 100px;
-    height: 100px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex: 1 1;
+  flex-flow: column;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
 }
 
 .create-table {
-    margin: 30px 0 30px 0;
+  margin: 30px 0 30px 0;
 }
 
 .select-style {
-    border: none;
+  border: none;
 }
 
 .select-editable {
-    position: relative;
-    width: 36px;
-    height: 18px;
+  font-size: 14px;
+  border: none;
+  width: 36px;
+  margin: 0;
 }
 
-.select-editable select {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 14px;
-    border: none;
-    width: 36px;
-    margin: 0;
+.select-editable {
+  width: 40px;
+  padding: 5px;
+  font-size: 12px;
+  border: 1px solid grey;
 }
 
-.select-editable input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 16px;
-    padding: 1px;
-    font-size: 12px;
-    border: none;
-}
-
-.select-editable select:focus, .select-editable input:focus {
-    outline: none;
+.select-editable select:focus,
+.select-editable input:focus {
+  outline: none;
 }
 
 .name-select {
-    width: 100%;
-    font-size: .9rem;
-    padding: 7px 88px;
-    text-align: left;
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 10px;
+  text-align: left;
 }
 
 .item-focus {
-    background: #D9D9D9;
-    padding: 0 5px;
+  background: #d9d9d9;
+  padding: 0 5px;
 }

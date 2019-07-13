@@ -8,7 +8,8 @@ export enum ActionTypes {
   FETCH_INVOICES_FAILURE = 'FETCH_INVOICES_FAILURE',
   SET_CURRENT_ID_INVOICE = 'SET_CURRENT_ID_INVOICE',
   ADD_INVOICE = 'ADD_INVOICE',
-  REMOVE_INVOICE = 'REMOVE_INVOICE'
+  REMOVE_INVOICE = 'REMOVE_INVOICE',
+  UPDATE_INVOICE = 'UPDATE_INVOICE'
 }
 
 export const Actions = {
@@ -17,7 +18,8 @@ export const Actions = {
   fetchInvoicesSuccess: (payload: Invoices[]) => action(ActionTypes.FETCH_INVOICES_SUCCESS, payload),
   fetchInvoicesError: (payload: any) => action(ActionTypes.FETCH_INVOICES_FAILURE, payload),
   addInvoice: (payload: Invoices) => action(ActionTypes.ADD_INVOICE, payload),
-  removeInvoice: (id: number) => action(ActionTypes.REMOVE_INVOICE, id)
+  removeInvoice: (id: number) => action(ActionTypes.REMOVE_INVOICE, id),
+  updateInvoice: (id: number, invoices: Invoices) => action(ActionTypes.UPDATE_INVOICE, {id, invoices})
 };
 
 export type ActionTypeUnion = ActionType<typeof Actions>;

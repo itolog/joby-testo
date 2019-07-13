@@ -52,7 +52,7 @@ class CreacteInvoice extends PureComponent<Props, State> {
   public state = {
     price: 1,
     discount: 0,
-    nextId: this.props.nextIDs +1,
+    nextId: this.props.nextIDs,
     url: this.props.match.url
   };
 
