@@ -1,6 +1,6 @@
 import { Epic, ofType } from 'redux-observable';
 import { Actions, ActionTypes, ActionTypeUnion } from './actions';
-import {  mergeMap, map, catchError, mapTo, tap } from 'rxjs/operators';
+import {  mergeMap, map, catchError, mapTo } from 'rxjs/operators';
 import invoicesService from '../../shared/services/invoicesService';
 import { from, of } from 'rxjs';
 

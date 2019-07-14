@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {  RouteComponentProps, withRouter } from 'react-router-dom';
@@ -16,6 +16,7 @@ type Props = & RouteComponentProps & ReturnType<typeof mapStateToProps>
 
 function Logo(props: Props) {
     const toMainPage = () => {
+        props.history.push('/')
         if(props.formValue.form.addInvoice) {
             if (props.formValue.form.addInvoice.anyTouched === true && !props.formValue.invoices.isInvoiceSaved) {
                 if(window.confirm("no save...go main?")) {

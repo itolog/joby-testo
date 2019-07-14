@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import myValidator from './validate';
 import { Field, reduxForm, FormSection } from 'redux-form';
 import { connect } from 'react-redux';
@@ -53,7 +53,6 @@ type Props =
 
 
 function CreateForm(props: Props) {
-  const refItems = useRef<any>(null);
   const { formValue } = props;
 
   const [price, setPrice] = useState(1);
