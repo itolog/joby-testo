@@ -80,3 +80,12 @@ export const getEditedProductsState = createSelector(
     }
   }
 )
+
+export const getEditedCustomerState = createSelector(
+  getInvoiceState,
+  (state: InvoiseState) => {
+    if(state.invoices[state.currentIdInvoice]) {
+      return state.invoices[state.currentIdInvoice].customer_id
+    }
+  }
+)

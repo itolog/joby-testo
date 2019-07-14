@@ -3,6 +3,7 @@ const myValidator = (values: any) => {
   if (!values.product) {
     errors.product = 'Required';
   }
+
   if (!values.customer) {
     errors.customer = 'Required';
   }
@@ -12,9 +13,9 @@ const myValidator = (values: any) => {
   } else if (isNaN(Number(values.qty))) {
     errors.qty = 'Must be a number'
   } else if (Number(values.qty) > 10) {
-    errors.qty = 'max length 10';
-  } else if (Number(values.qty) === 0 ) {
-    errors.qty = 'min length 0';
+    errors.qty = 'max value 10';
+  } else if (Number(values.qty) <= 0 ) {
+    errors.qty = 'min value 1';
   }
 
 

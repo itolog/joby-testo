@@ -3,13 +3,14 @@ import myValidator from './validate';
 import { Field, reduxForm, FormSection } from 'redux-form';
 import { connect } from 'react-redux';
 import { uniqueId } from 'lodash';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import { Products } from '../../../../store/products/types';
 import { Customers } from '../../../../store/customers/types';
 import { Dispatch } from 'redux';
 import { Invoices } from '../../../../store/invoices/types';
 import { Actions } from '../../../../store/invoices/actions';
-import { getEditedQtyState, getEditedProductsState } from '../../../../store/invoices/selectors';
+import { getEditedQtyState, getEditedProductsState, getEditedCustomerState } from '../../../../store/invoices/selectors';
 import discountCalculator from '../../../../shared/utils/discountCalculator';
 import { AppState } from '../../../../store';
 import { getProductState } from '../../../../store/products/selectors';
@@ -30,11 +31,8 @@ const mapStateToProps = (state: AppState) => {
     productState: getProductState(state),
     initialValues: {
       itemsGroup: getEditedProductsState(state),
-      qtyGroup: getEditedQtyState(state)
-      // customer: 2,
-      // product: 1,
-      // discount: 1,
-      // qty: 1
+      qtyGroup: getEditedQtyState(state),
+      customer: getEditedCustomerState(state),
     }
   };
 };
@@ -49,6 +47,7 @@ type Props =
   & ReturnType<typeof mapDispatchToProps>
   & ReturnType<typeof mapStateToProps>
   & PropsOwn
+  & RouteComponentProps
   ;
 
 
@@ -82,7 +81,7 @@ function CreateForm(props: Props) {
         setErrors(`Fields : ${Object.keys(syncErrors)} is required`);
         setIsError(true);
       } else {
-        // props.history.push('/invoices/');
+        props.history.push('/invoices/')
         setErrors('');
         setIsError(false);
       }
@@ -102,6 +101,7 @@ function CreateForm(props: Props) {
       };
       if (!isError) {
         props.addInvoice(invoice);
+        
       }
     }
   }
@@ -155,6 +155,7 @@ function CreateForm(props: Props) {
         && formValue.addInvoice.values.qty !== '') {
         setPriseDynimic();
       }
+      console.log(props)
     }
     // [props.products]
   );
@@ -313,9 +314,9 @@ function CreateForm(props: Props) {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(
   reduxForm<{}, Props>({
      form: 'addInvoice', 
      validate: myValidator, 
      enableReinitialize: true 
-    })(CreateForm));
+    })(CreateForm)))as any;
