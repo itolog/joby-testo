@@ -9,6 +9,7 @@ import { Customers } from '../../../../store/customers/types';
 import { Dispatch } from 'redux';
 import { Invoices } from '../../../../store/invoices/types';
 import { Actions } from '../../../../store/invoices/actions';
+import { getEditedQtyState, getEditedProductsState } from '../../../../store/invoices/selectors';
 import discountCalculator from '../../../../shared/utils/discountCalculator';
 import { AppState } from '../../../../store';
 import { getProductState } from '../../../../store/products/selectors';
@@ -28,6 +29,8 @@ const mapStateToProps = (state: AppState) => {
     formValue: state.form,
     productState: getProductState(state),
     initialValues: {
+      itemsGroup: getEditedProductsState(state),
+      qtyGroup: getEditedQtyState(state)
       // customer: 2,
       // product: 1,
       // discount: 1,
@@ -131,7 +134,8 @@ function CreateForm(props: Props) {
        total: 1000,
        items: editedResults
      })
-     console.log(editedResults);
+     console.log(values);
+    
     }
   }
   const submitForm = (e: React.SyntheticEvent) => {
@@ -150,13 +154,6 @@ function CreateForm(props: Props) {
         && formValue.addInvoice.values 
         && formValue.addInvoice.values.qty !== '') {
         setPriseDynimic();
-      }
-      if(refItems.current) {
-        console.log(refItems.current);
-      }
-      
-      if (formValue.addInvoice) {
-        console.log(formValue.addInvoice.values);
       }
     }
     // [props.products]

@@ -3,6 +3,20 @@ import { createSelector } from 'reselect';
 import { AppState } from '../index';
 import { InvoiseState } from './types';
 
+// const editedValueForm = (state: any, field: string) => {
+//   if (state.invoices[state.currentIdInvoice]) {
+//     let result = state.invoices[state.currentIdInvoice].items.map((item: any) => {
+//       return {[item.id]: item[`${field}`]};
+//    })
+//   return result.reduce((acc: any, item: any) => {
+//      return {
+//        ...acc,
+//        [Number(Object.keys(item))]: item[Number(Object.keys(item))]
+//      }
+//    })
+//   }
+// }
+
 export const getInvoiceState = (state: AppState ) => state.invoices;
 
 export const getInvoices = createSelector(
@@ -32,3 +46,37 @@ export const getCurrenInvoiceId = createSelector(
   getInvoiceState,
   (state: InvoiseState) => state.currentIdInvoice
 );
+
+export const getEditedQtyState = createSelector(
+  getInvoiceState,
+  (state: InvoiseState) => {
+    if (state.invoices[state.currentIdInvoice]) {
+      let result = state.invoices[state.currentIdInvoice].items.map((item: any) => {
+        return {[item.id]: item.quantity};
+     })
+    return result.reduce((acc: any, item: any) => {
+       return {
+         ...acc,
+         [Number(Object.keys(item))]: item[Number(Object.keys(item))]
+       }
+     })
+    }
+  }
+)
+
+export const getEditedProductsState = createSelector(
+  getInvoiceState,
+  (state: InvoiseState) => {
+    if (state.invoices[state.currentIdInvoice]) {
+      let result = state.invoices[state.currentIdInvoice].items.map((item: any) => {
+        return {[item.id]: item.product_id};
+     })
+    return result.reduce((acc: any, item: any) => {
+       return {
+         ...acc,
+         [Number(Object.keys(item))]: item[Number(Object.keys(item))]
+       }
+     })
+    }
+  }
+)
