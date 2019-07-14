@@ -21,6 +21,6 @@ export const invoiceSaved:  Epic<ActionTypeUnion, any> = (action$) => {
 
   return action$.pipe(
     ofType(ActionTypes.ADD_INVOICE),
-    mapTo(Actions.invoiceSaved())
+    mapTo(Actions.invoiceSaved(true))
   )
 }

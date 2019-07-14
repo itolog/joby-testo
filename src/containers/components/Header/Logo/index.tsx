@@ -15,24 +15,16 @@ const mapStateToProps = (state: AppState) => {
 type Props = & RouteComponentProps & ReturnType<typeof mapStateToProps>
 
 function Logo(props: Props) {
-    useEffect(() => {
-       
-    })
     const toMainPage = () => {
-        // props.history.push('/');
         if(props.formValue.form.addInvoice) {
             if (props.formValue.form.addInvoice.anyTouched === true && !props.formValue.invoices.isInvoiceSaved) {
                 if(window.confirm("no save...go main?")) {
                     props.history.push('/')
                 }
-                    // console.log('ds',props)  
             } else {
                 props.history.push('/')
             }
               
-        }
-        if(props.match.path == '/invoices/') {
-            console.log("object");
         }
     }
     return (

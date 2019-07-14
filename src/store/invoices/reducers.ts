@@ -62,7 +62,7 @@ export function reducer(
     case ActionTypes.INVOICE_SAIVED: {
       return {
         ...state,
-        isInvoiceSaved: true
+        isInvoiceSaved: action.payload
       }
     }
     case ActionTypes.SET_CURRENT_ID_INVOICE: {

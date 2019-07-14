@@ -39,7 +39,8 @@ const mapStateToProps = (state: AppState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   addInvoice: (payload: Invoices) => dispatch(Actions.addInvoice(payload)),
-  updateInvoice: (id: number, payload: Invoices) => dispatch(Actions.updateInvoice(id, payload))
+  updateInvoice: (id: number, payload: Invoices) => dispatch(Actions.updateInvoice(id, payload)),
+  invoiceSaved: (payload: boolean) => dispatch(Actions.invoiceSaved(payload))
 });
 
 
@@ -79,7 +80,7 @@ function CreateForm(props: Props) {
         setErrors(`Fields : ${Object.keys(syncErrors)} is required`);
         setIsError(true);
       } else {
-        // props.history.push('/invoices/')
+        props.history.push('/invoices/');
         setErrors('');
         setIsError(false);
       }
@@ -99,7 +100,7 @@ function CreateForm(props: Props) {
       };
       if (!isError) {
         props.addInvoice(invoice);
-        
+        props.invoiceSaved(false);
       }
     }
   }

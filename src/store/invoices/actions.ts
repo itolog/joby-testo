@@ -20,7 +20,7 @@ export const Actions = {
   fetchInvoicesError: (payload: any) => action(ActionTypes.FETCH_INVOICES_FAILURE, payload),
   addInvoice: (payload: Invoices) => action(ActionTypes.ADD_INVOICE, payload),
   removeInvoice: (id: number) => action(ActionTypes.REMOVE_INVOICE, id),
-  invoiceSaved: () => action(ActionTypes.INVOICE_SAIVED),
+  invoiceSaved: (payload: boolean) => action(ActionTypes.INVOICE_SAIVED, payload),
   updateInvoice: (id: number, invoices: Invoices) => action(ActionTypes.UPDATE_INVOICE, {id, invoices})
 };
 
