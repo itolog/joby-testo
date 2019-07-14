@@ -20,5 +20,6 @@ export interface InvoiseState {
   },
   ids: number[],
   isLoading: boolean,
-  error: string | null
+  error: string | null,
+  isInvoiceSaved: boolean
 }

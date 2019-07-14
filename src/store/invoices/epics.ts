@@ -1,6 +1,6 @@
 import { Epic, ofType } from 'redux-observable';
 import { Actions, ActionTypes, ActionTypeUnion } from './actions';
-import {  mergeMap, map, catchError } from 'rxjs/operators';
+import {  mergeMap, map, catchError, mapTo, tap } from 'rxjs/operators';
 import invoicesService from '../../shared/services/invoicesService';
 import { from, of } from 'rxjs';
 
@@ -16,3 +16,11 @@ export const fetchInvoicesEpic: Epic<ActionTypeUnion, any> = (action$) => {
     })
   )
 };
+
+export const invoiceSaved:  Epic<ActionTypeUnion, any> = (action$) => {
+
+  return action$.pipe(
+    ofType(ActionTypes.ADD_INVOICE),
+    mapTo(Actions.invoiceSaved())
+  )
+}

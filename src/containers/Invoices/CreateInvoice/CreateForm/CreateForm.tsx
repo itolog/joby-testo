@@ -73,15 +73,13 @@ function CreateForm(props: Props) {
   const createInvoice = () => {
     if (formValue.addInvoice.values) {
       const { values } = formValue.addInvoice;
-
-      console.log(formValue.addInvoice);
       // Validation
       if ('syncErrors' in formValue.addInvoice) {
         const syncErrors: {} = formValue.addInvoice['syncErrors'];
         setErrors(`Fields : ${Object.keys(syncErrors)} is required`);
         setIsError(true);
       } else {
-        props.history.push('/invoices/')
+        // props.history.push('/invoices/')
         setErrors('');
         setIsError(false);
       }
@@ -134,7 +132,6 @@ function CreateForm(props: Props) {
        total: 1000,
        items: editedResults
      })
-     console.log(values);
     
     }
   }
@@ -155,7 +152,6 @@ function CreateForm(props: Props) {
         && formValue.addInvoice.values.qty !== '') {
         setPriseDynimic();
       }
-      console.log(props)
     }
     // [props.products]
   );

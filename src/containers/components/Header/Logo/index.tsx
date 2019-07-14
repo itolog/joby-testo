@@ -4,14 +4,33 @@ import { connect } from 'react-redux';
 import {  RouteComponentProps, withRouter } from 'react-router-dom';
 
 import './logo.css'
+import { AppState } from '../../../../store';
 
-type Props = & RouteComponentProps
+const mapStateToProps = (state: AppState) => {
+      return {
+        formValue: state,
+      }
+    };
+
+type Props = & RouteComponentProps & ReturnType<typeof mapStateToProps>
+
 function Logo(props: Props) {
     useEffect(() => {
-        console.log(props)
+       
     })
     const toMainPage = () => {
-        props.history.push('/');
+        // props.history.push('/');
+        if(props.formValue.form.addInvoice) {
+            if (props.formValue.form.addInvoice.anyTouched === true && !props.formValue.invoices.isInvoiceSaved) {
+                if(window.confirm("no save...go main?")) {
+                    props.history.push('/')
+                }
+                    // console.log('ds',props)  
+            } else {
+                props.history.push('/')
+            }
+              
+        }
         if(props.match.path == '/invoices/') {
             console.log("object");
         }
@@ -23,5 +42,6 @@ function Logo(props: Props) {
     )
 }
 export default compose(
-    withRouter
-)(Logo)
+    withRouter,
+    connect(mapStateToProps)
+)(Logo) as any

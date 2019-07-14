@@ -9,7 +9,8 @@ export enum ActionTypes {
   SET_CURRENT_ID_INVOICE = 'SET_CURRENT_ID_INVOICE',
   ADD_INVOICE = 'ADD_INVOICE',
   REMOVE_INVOICE = 'REMOVE_INVOICE',
-  UPDATE_INVOICE = 'UPDATE_INVOICE'
+  UPDATE_INVOICE = 'UPDATE_INVOICE',
+  INVOICE_SAIVED = 'INVOICE_SAIVED'
 }
 
 export const Actions = {
@@ -19,6 +20,7 @@ export const Actions = {
   fetchInvoicesError: (payload: any) => action(ActionTypes.FETCH_INVOICES_FAILURE, payload),
   addInvoice: (payload: Invoices) => action(ActionTypes.ADD_INVOICE, payload),
   removeInvoice: (id: number) => action(ActionTypes.REMOVE_INVOICE, id),
+  invoiceSaved: () => action(ActionTypes.INVOICE_SAIVED),
   updateInvoice: (id: number, invoices: Invoices) => action(ActionTypes.UPDATE_INVOICE, {id, invoices})
 };
 

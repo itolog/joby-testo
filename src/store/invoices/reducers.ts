@@ -8,7 +8,8 @@ const initialState: InvoiseState = {
   ids: [],
   isLoading: true,
   error: null,
-  invoices: {}
+  invoices: {},
+  isInvoiceSaved: false
 };
 
 export function reducer(
@@ -56,6 +57,12 @@ export function reducer(
         ...state,
         ids,
         invoices
+      }
+    }
+    case ActionTypes.INVOICE_SAIVED: {
+      return {
+        ...state,
+        isInvoiceSaved: true
       }
     }
     case ActionTypes.SET_CURRENT_ID_INVOICE: {

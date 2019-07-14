@@ -12,13 +12,14 @@ import { reducer as invoicesReducer } from "./invoices/reducers";
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import {  fetchCustomersEpic } from './customers/epics';
 import { fetchProductsEpic } from './products/epics';
-import { fetchInvoicesEpic } from './invoices/epics';
+import { fetchInvoicesEpic, invoiceSaved } from './invoices/epics';
 
 
 const rootEpic = combineEpics(
   fetchCustomersEpic,
   fetchProductsEpic,
-  fetchInvoicesEpic
+  fetchInvoicesEpic,
+  invoiceSaved
 );
 
 const epicMiddleware = createEpicMiddleware();
